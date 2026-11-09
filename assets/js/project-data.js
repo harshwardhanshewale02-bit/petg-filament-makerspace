@@ -31,7 +31,7 @@ window.PETFILAMENT_PROJECT = {
   // Student Team Members
   students: [
     {
-      name: "Mayur Harshwardhan Shewale",
+      name: "Harshwardhan Shewale",
       prn: "PRN: 1016 (2126UMEM1016)",
       role: "Lead Student & Mechanical CAD Modeling",
       programme: "FY B.Tech Mechanical Engineering",

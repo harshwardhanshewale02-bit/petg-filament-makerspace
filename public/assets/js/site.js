@@ -768,7 +768,7 @@
         input: $('#photo-input-member1'),
         btnUpload: $('#btn-upload-member1'),
         btnReset: $('#btn-reset-member1'),
-        name: 'Mayur Harshwardhan Shewale',
+        name: 'Harshwardhan Shewale',
         defaultSrc: 'images/team/member1.jpg'
       },
       'member2': {

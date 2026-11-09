@@ -25,7 +25,7 @@ Explore the full interactive project portal with 3D WebGL assembly, SolidWorks d
 
 | Student Name | PRN Number | University Roll / PRN | Role & Responsibilities |
 | :--- | :---: | :---: | :--- |
-| **Mayur Harshwardhan Shewale** *(Team Lead)* | **1016** | `2126UMEM1016` | Mechanical Design, SolidWorks CAD modeling, Assembly Architecture |
+| **Harshwardhan Shewale** *(Team Lead)* | **1016** | `2126UMEM1016` | Mechanical Design, SolidWorks CAD modeling, Assembly Architecture |
 | **Shraddha Vijay Chavhanke (Chavan K)** | **1073** | `2126UMEM1073` | Thermal System Modeling, Heat Transfer Analysis, Die Thermodynamics |
 | **Prem Shantaram Gangurde** | **1014** | `2126UMEM1014` | Mechanical Fabrication, Workshop Machining, Dimensional Tolerances |
 | **Yugant Sunil Pawar** | **1058** | `2126UMEM1058` | Drive Mechanics, Motor Pulling System, Diameter Consistency Testing |
