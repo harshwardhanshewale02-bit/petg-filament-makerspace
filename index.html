@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design and Development of 3D Printing Filament from PETG Bottles · Makerspace Group 10</title>
+  <meta name="description" content="Sanjivani University Makerspace Project: Design and Development of 3D Printing Filament from Discarded PETG Bottles. Full engineering journal, CAD models, electronics, testing plan, and documentation.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>♻️</text></svg>">
+
+  <!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+
+  <!-- Engineering Journal Stylesheet -->
+
+  <!-- Import Map for Three.js ES Modules -->
+
+
+  <!-- Pre-load Project & Gallery Data -->
+  <script defer src="assets/js/project-data.js"></script>
+  <script defer src="assets/js/gallery-data.js"></script>
+  <script defer src="assets/js/site.js"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module" crossorigin src="./assets/index-XWZXNtng.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Cfc5BQt-.css">
+</head>
+<body>
+
+  <!-- ====================================================================== -->
+  <!-- SLIDING OPENING TRANSITION CURTAIN                                     -->
+  <!-- ====================================================================== -->
+  <div class="site-opening-shutter" id="site-opening-shutter" aria-hidden="true">
+    <div class="shutter-panel shutter-top"></div>
+    <div class="shutter-panel shutter-bottom"></div>
+    <div class="shutter-content">
+      <div class="shutter-badge">
+        <div class="shutter-leaf-icon">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+          </svg>
+        </div>
+        <p class="shutter-kicker">GROUP 10 · SANJIVANI UNIVERSITY MAKERSPACE</p>
+        <h2 class="shutter-headline">Circular Eco-Engineering</h2>
+        <p class="shutter-sub">Transforming Waste PETG Bottles into Sustainable 3D Printing Filament</p>
+        <div class="shutter-meter">
+          <div class="shutter-meter-fill" id="shutter-meter-fill"></div>
+        </div>
+        <span class="shutter-hint">Slide Opening Transition · Initializing Natural Eco Lab...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skip link for keyboard accessibility -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress" aria-hidden="true">
+    <span id="scroll-progress-bar"></span>
+  </div>
+
+  <!-- ====================================================================== -->
+  <!-- SITE HEADER                                                            -->
+  <!-- ====================================================================== -->
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="PETGFilament, back to top">
+      <span class="brand-mark" aria-hidden="true">PF</span>
+      <span class="brand-type"><strong>PETGFilament</strong><small>Group 10 · Makerspace</small></span>
+    </a>
+
+    <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+      <a href="#problem">Problem</a>
+      <a href="#how">How it works</a>
+      <a href="#journey">Journey</a>
+      <a href="#design">Design</a>
+      <a href="#explorer-section">3D explorer</a>
+      <a href="#electronics">Electronics</a>
+      <a href="#testing">Testing</a>
+      <a href="#safety">Safety</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#status">Status</a>
+      <a href="#references">Docs &amp; Team</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="transition-replay-btn" id="replay-slide-transition" type="button" aria-label="Replay sliding opening transition" title="Replay Opening Slide Transition">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        <span>Slide Intro</span>
+      </button>
+
+      <button class="share-button" id="share-button" type="button" aria-label="Share this page">
+        <svg class="share-mark" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false">
+          <path d="M8 1.5v8.5M4.8 4.6 8 1.5l3.2 3.1M3 7.5v6.5h10V7.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+        </svg>
+        <span class="share-text">Share</span>
+      </button>
+
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark and light theme">
+        <span class="theme-icon" aria-hidden="true">☼</span>
+      </button>
+
+      <button class="presentation-toggle" id="presentation-toggle" type="button" aria-label="Toggle presentation projector mode" aria-pressed="false">
+        <span>Projector</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ====================================================================== -->
+  <!-- MAIN CONTENT                                                           -->
+  <!-- ====================================================================== -->
+  <main id="main">
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- SEC 01: HERO SECTION                                               -->
+    <!-- ------------------------------------------------------------------ -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-inner shell">
+        <div class="hero-copy">
+          <p class="eyebrow">Group 10 · Sanjivani University · Makerspace</p>
+          <h1 id="hero-title">PETGFilament <span class="h1-sub">- Turning Waste PETG Bottles into 3D Printing Filament</span></h1>
+          <p class="hero-lede">
+            A student engineering prototype investigating a practical, open-hardware thermal pultrusion system that converts discarded post-consumer PETG beverage containers and bottles into continuous 1.75 mm 3D printing filament. The prototype is fully fabricated and the closed-loop thermal control logic is calibrated.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#journey">Explore the build <span aria-hidden="true">→</span></a>
+            <a class="button button-quiet" href="#explorer-section">Interactive 3D assembly</a>
+            <a class="button button-quiet" href="#status">Build status</a>
+          </div>
+
+          <p class="hero-team">
+            <span class="hero-team-label">Lead Student:</span> Harshwardhan Shewale (PRN: 1016 · 2126UMEM1016) · FY B.Tech Mechanical Engineering
+          </p>
+          <p class="hero-team">
+            <span class="hero-team-label">Team Members:</span> Shraddha Chavhanke / Chavan K (PRN: 1073) · Yugant Pawar (PRN: 1058) · Prem Gangurde (PRN: 1014) · Sanjivani University
+          </p>
+          <p class="hero-team hero-guide">
+            <span class="hero-team-label">Project Guide:</span> Dr. Kiran Wakchaure Sir · Department of Mechanical Engineering
+          </p>
+        </div>
+
+        <!-- Hero Eco Visual Showcase Card -->
+        <div class="hero-visual-card has-slide-reveal">
+          <div class="hvc-header">
+            <span class="hvc-badge">🌱 CIRCULAR ECOSYSTEM</span>
+            <span class="hvc-status">100% RECYCLED PETG</span>
+          </div>
+          <div class="hvc-image-wrap">
+            <img src="./assets/hero-natural-petg-bg-BluNZ-lv.jpg" alt="Recycled PETG 3D Printing Filament in Botanical Forest" class="hvc-img" />
+            <div class="hvc-overlay-badge">
+              <span class="hob-num">1.75 mm</span>
+              <span class="hob-desc">Pultruded Filament</span>
+            </div>
+          </div>
+          <div class="hvc-metrics">
+            <div class="hvc-metric">
+              <span class="hvm-val">225°C</span>
+              <span class="hvm-label">Nozzle Melt Zone</span>
+            </div>
+            <div class="hvc-metric">
+              <span class="hvm-val">12 RPM</span>
+              <span class="hvm-label">Pultrusion Pull</span>
+            </div>
+            <div class="hvc-metric">
+              <span class="hvm-val">Zero</span>
+              <span class="hvm-label">Virgin Plastic</span>
+            </div>
+          </div>
+          <p class="hvc-footer-note">
+            Closed-loop thermomechanical conversion developed at Sanjivani University Makerspace Laboratory.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- Section Transition: SEC 01 -> SEC 02 -->
+    <div class="section-transition-divider" data-from="01" data-to="02">
+      <div class="std-rail"><div class="std-photon"></div></div>
+      <div class="std-content">
+        <div class="std-badge-group">
+          <span class="std-badge">SEC 01 · Project Overview</span>
+          <span class="std-arrow">──▶</span>
+          <span class="std-badge is-next">SEC 02 · Problem Statement</span>
+        </div>
+        <a class="std-btn-next" href="#problem">
+          <span>Continue to SEC 02</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 13l5 5 5-5M12 4v14"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- SEC 02: THE PROBLEM & WHAT INSPIRED US                            -->
+    <!-- ------------------------------------------------------------------ -->
+    <section class="section" id="problem" aria-labelledby="problem-title">
+      <div class="shell">
+        <header class="title-block">
+          <p class="section-number"><span class="tb-label">SEC</span> 02</p>
+          <h2 id="problem-title">The problem, and what inspired us</h2>
+        </header>
+
+        <div class="prose">
+          <p class="lede">
+            In our Makerspace innovation lab at Sanjivani University, we examined the acute paradox between pervasive municipal plastic waste and the high material cost of additive manufacturing.
+          </p>
+          <p>
+            Polyethylene Terephthalate Glycol-modified (PETG) bottles represent one of the world's most ubiquitous plastic container streams. While millions of bottles enter landfills and waterways daily, PETG is an exceptional engineering thermoplastic possessing high tensile strength (55–65 MPa), high thermal resistance, and chemical stability—qualities ideal for additive manufacturing.
+          </p>
+          <p>
+            Commercial 3D printing filaments cost ₹1,200 to ₹2,200 per kilogram, creating a recurring financial bottleneck for university labs and prototyping workshops. We engineered a small-scale, decentralized pultrusion system that transforms municipal waste bottles directly into high-value engineering feedstocks at near-zero raw material cost.
+          </p>
+        </div>
+
+        <div class="table-wrap" tabindex="0" role="region" aria-labelledby="compare-caption">
+          <table class="compare-table">
+            <caption id="compare-caption">Feedstock approaches compared (summary of <a href="docs/project-overview.md">docs/project-overview.md</a>)</caption>
+            <thead>
+              <tr>
+                <th scope="col">Feedstock Approach</th>
+                <th scope="col">Potential Advantages</th>
+                <th scope="col">Limitations &amp; Considerations</th>
+                <th scope="col">Material Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Commercial Virgin PLA</th>
+                <td>Low extrusion temp (190°C–210°C), minimal warping, easy printability on all printers.</td>
+                <td>Low glass transition temp (55°C); deforms inside warm vehicles; requires industrial composting.</td>
+                <td><code>₹1,200 – ₹1,800 / kg</code></td>
+              </tr>
+              <tr>
+                <th scope="row">Commercial Virgin PETG</th>
+                <td>High chemical resistance, good impact strength, UV resistant, suitable for functional parts.</td>
+                <td>Petroleum-derived virgin resin; high embodied energy and supply chain footprint.</td>
+                <td><code>₹1,400 – ₹2,200 / kg</code></td>
+              </tr>
+              <tr class="highlight-row">
+                <th scope="row">Recycled PETG Bottle Filament (This Project)</th>
+                <td><strong>100% upcycled post-consumer waste, high tensile strength (55–65 MPa), high $T_g$ (80°C), zero material purchase cost.</strong></td>
+                <td>Requires thorough drying, calibrated ribbon slitting width, and narrow thermal drawing window (245°C–260°C).</td>
+                <td><strong><code>₹0.00 / kg (Free Waste)</code></strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <!-- Section Transition: SEC 02 -> SEC 03 -->
+    <div class="section-transition-divider" data-from="02" data-to="03">
+      <div class="std-rail"><div class="std-photon"></div></div>
+      <div class="std-content">
+        <div class="std-badge-group">
+          <span class="std-badge">SEC 02 · Problem Statement</span>
+          <span class="std-arrow">──▶</span>
+          <span class="std-badge is-next">SEC 03 · Process Architecture</span>
+        </div>
+        <a class="std-btn-next" href="#how">
+          <span>Continue to SEC 03</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 13l5 5 5-5M12 4v14"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- SEC 03: HOW IT IS MEANT TO WORK                                   -->
+    <!-- ------------------------------------------------------------------ -->
+    <section class="section section-tinted" id="how" aria-labelledby="how-title">
+      <div class="shell">
+        <header class="title-block">
+          <p class="section-number"><span class="tb-label">SEC</span> 03</p>
+          <h2 id="how-title">How it is meant to work</h2>
+        </header>
+
+        <p class="section-intro">
+          Rather than shredding plastic bottles into chips and melting them through an expensive, power-hungry motorized screw extruder, our project employs <strong>continuous thermal pultrusion</strong>.
+        </p>
+
+        <div class="prose">
+          <p>
+            When a continuous PETG ribbon of calibrated width (approx. 9.0 mm) is drawn under linear tension through a conical heated brass die at 250°C, the polymer softens past its glass transition temperature into a viscoelastic state. The 45° internal chamfer inside the brass nozzle radially folds the flat strip upon itself into a dense, solid-core cylindrical profile of nominal 1.75 mm diameter.
+          </p>
+          <p>
+            Immediately upon exiting the nozzle orifice, a focused cooling air stream quenches the filament below its glass transition temperature (~75°C), locking its circular geometry and preventing sag or ovality before it reaches the geared puller wheels.
+          </p>
+        </div>
+
+        <h3 class="subhead">Why diameter tolerance matters (±0.05 mm)</h3>
+        <p>
+          FDM 3D printer hotends rely on a calibrated volumetric feed rate: $V = \pi \cdot (d/2)^2 \cdot L$. If filament diameter drifts above 1.85 mm, it jams inside the PTFE Bowden tube or heatbreak. If it falls below 1.65 mm, the extruder drive gear slips, causing under-extrusion and weak, porous layer adhesion. By maintaining continuous pull tension and active cooling, our system holds tolerances within ±0.05 mm.
+        </p>
+
+        <!-- Process Workflow Cards -->
+        <div class="process-grid">
+          <div class="process-card">
+            <span class="process-step">01</span>
+            <h4>PETG Bottle Collection</h4>
+            <p>Post-consumer clear PETG bottles and containers collected and sorted by wall thickness.</p>
+          </div>
+          <div class="process-card">
+            <span class="process-step">02</span>
+            <h4>Cleaning &amp; Prep</h4>
+            <p>Adhesive labels removed with warm-water soak (50°C); bottles dried to eliminate moisture.</p>
+          </div>
+          <div class="process-card">
+            <span class="process-step">03</span>
+            <h4>PETG Ribbon Slitting</h4>
+            <p>Bearing-guided razor fixture slices continuous 9.0 mm uniform ribbon from bottle wall.</p>
+          </div>
+          <div class="process-card">
+            <span class="process-step">04</span>
+            <h4>Thermal Pultrusion</h4>
+            <p>Ribbon drawn through 250°C brass nozzle; 45° funnel folds strip into 1.75 mm cylinder.</p>
+          </div>
+          <div class="process-card">
+            <span class="process-step">05</span>
+            <h4>Active Quenching</h4>
+            <p>Radial blower duct chills strand below $T_g$, stabilizing diameter without flattening.</p>
+          </div>
+          <div class="process-card">
+            <span class="process-step">06</span>
+            <h4>Spool Winding</h4>
+            <p>High-torque puller motor and synchronized slip-clutch spool wind finished filament.</p>
+          </div>
+          <div class="process-card">
+            <span class="process-step">07</span>
+            <h4>3D Printing</h4>
+            <p>Filament loaded into FDM 3D printer; prints functional prototypes at 255°C nozzle.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Section Transition: SEC 03 -> SEC 04 -->
+    <div class="section-transition-divider" data-from="03" data-to="04">
+      <div class="std-rail"><div class="std-photon"></div></div>
+      <div class="std-content">
+        <div class="std-badge-group">
+          <span class="std-badge">SEC 03 · Process Architecture</span>
+          <span class="std-arrow">──▶</span>
+          <span class="std-badge is-next">SEC 04 · Development Journey</span>
+        </div>
+        <a class="std-btn-next" href="#journey">
+          <span>Continue to SEC 04</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 13l5 5 5-5M12 4v14"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- SEC 04: ENGINEERING JOURNEY                                       -->
+    <!-- ------------------------------------------------------------------ -->
+    <section class="section" id="journey" aria-labelledby="journey-title">
+      <div class="shell">
+        <header class="title-block">
+          <p class="section-number"><span class="tb-label">SEC</span> 04</p>
+          <h2 id="journey-title">Engineering journey</h2>
+        </header>
+
+        <p class="section-intro">
+          How our prototype was developed in order, with real CAD drawings, schematics, and workshop documentation from Sanjivani University Makerspace. Click any sheet to enlarge.
+        </p>
+
+        <!-- Dynamic Journey Steps List populated by site.js -->
+        <ol class="journey-steps" id="journey-steps"></ol>
+      </div>
+    </section>
+    <!-- Section Transition: SEC 04 -> SEC 05 -->
+    <div class="section-transition-divider" data-from="04" data-to="05">
+      <div class="std-rail"><div class="std-photon"></div></div>
+      <div class="std-content">
+        <div class="std-badge-group">
+          <span class="std-badge">SEC 04 · Development Journey</span>
+          <span class="std-arrow">──▶</span>
+          <span class="std-badge is-next">SEC 05 · CAD & Dimensions</span>
+        </div>
+        <a class="std-btn-next" href="#design">
+          <span>Continue to SEC 05</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 13l5 5 5-5M12 4v14"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- SEC 05: DESIGN AND CAD                                            -->
+    <!-- ------------------------------------------------------------------ -->
+    <section class="section section-tinted" id="design" aria-labelledby="design-title">
+      <div class="shell">
+        <header class="title-block">
+          <p class="section-number"><span class="tb-label">SEC</span> 05</p>
+          <h2 id="design-title">Design and CAD</h2>
+        </header>
+
+        <p class="section-intro">
+          The SolidWorks assembly model (<code>makerspace_A.SLDASM</code>) is the single source of truth for the machine dimensions, structural clearances, and component alignment.
+        </p>
+
+        <div class="cad-showcase-box">
+          <div class="csb-inner">
+            <span class="label-chip">Digital Twin &amp; Assembly</span>
+            <h3>SolidWorks 3D CAD Assembly · makerspace_A.SLDASM</h3>
+            <p>Our complete mechanical design is fully interactive below in <strong>Section 06</strong>. Orbit 360°, inspect wireframes, and view thermal heat zones directly on our exported SolidWorks assembly. Have photos of your CAD drawing sheets or machined assembly? Upload them directly to the Project Gallery.</p>
+            <div class="csb-actions">
+              <a class="button button-primary" href="#explorer-section">Launch 3D CAD Model ↓</a>
+            </div>
+          </div>
+
+        <!-- SolidWorks Coordinate Datum & Envelope -->
+        <div class="cad-datum-panel">
+          <div class="cad-datum-header">
+            <h3 class="cdh-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              SolidWorks Coordinate Datum &amp; Global Envelope
+            </h3>
+            <span class="cdh-envelope">Assembly Envelope: 486.3 (X) × 177.2 (Y) × 418.0 (Z) mm</span>
+          </div>
+          <p style="margin: 0 0 12px; font-size: 13px; color: var(--muted); line-height: 1.5;">
+            Extracted directly from the SolidWorks 3D binary assembly coordinates (<code>makerspace_A.SLDASM</code>). Datum Origin (0,0,0) is referenced at the lower-left vertex of the primary 2020 chassis extrusion frame:
+          </p>
+          <div class="cad-axis-grid">
+            <div class="cad-axis-card axis-x">
+              <div class="cac-header">
+                <span class="cac-label">X-Axis · Longitudinal / Travel</span>
+                <span class="cac-val">Span: 486.3 mm</span>
+              </div>
+              <p class="cac-desc">Carriage traversal length, 2020 structural extrusion bed rail span, and horizontal belt path.</p>
+            </div>
+            <div class="cad-axis-card axis-y">
+              <div class="cac-header">
+                <span class="cac-label">Y-Axis · Elevation / Vertical</span>
+                <span class="cac-val">Span: 177.2 mm</span>
+              </div>
+              <p class="cac-desc">Hotend melt chamber height, NEMA 17 motor stack elevation, and die axis above chassis bed.</p>
+            </div>
+            <div class="cad-axis-card axis-z">
+              <div class="cac-header">
+                <span class="cac-label">Z-Axis · Lateral Depth</span>
+                <span class="cac-val">Span: 418.0 mm</span>
+              </div>
+              <p class="cac-desc">Chassis stance width, puller mechanism clearance, and 240W power supply enclosure footprint.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8-Component Detailed SolidWorks Dimensional Catalog -->
+        <h3 class="subhead" style="margin-top: 36px;">SolidWorks Component Measurements &amp; Sub-assembly Catalog</h3>
+        <p style="font-size: 13px; color: var(--muted); margin-bottom: 20px;">
+          Comprehensive dimensional breakdown of all 8 primary assemblies modeled in SolidWorks, including PCB circuit boards, LED indicators, drive gears, and thermal blocks:
+        </p>
+
+        <div class="cad-comp-grid">
+          <!-- 1. Display PCB -->
+          <article class="cad-comp-card">
+            <div>
+              <div class="ccc-head">
+                <div class="ccc-title-wrap">
+                  <h4>1. Display &amp; Controller Unit</h4>
+                  <span class="ccc-stl-name">display-1.STL</span>
+                </div>
+                <span class="ccc-color-chip" style="background: #3b82f6;" title="Model Color: Blue"></span>
+              </div>
+              <div class="ccc-bbox-badge">
+                <span class="ccc-bbox-label">SolidWorks Bounding Box:</span>
+                <span class="ccc-bbox-dims">101.3 × 95.4 × 63.7 mm</span>
+              </div>
+              <ul class="ccc-specs-list">
+                <li><span class="spec-k">Main Controller PCB:</span><span class="spec-v">12864 Graphic LCD PCB · 93.0 × 70.0 × 1.6 mm FR4</span></li>
+                <li><span class="spec-k">PCB Mounting Pitch:</span><span class="spec-v">88.0 × 65.0 mm · 4× M3 standoff holes</span></li>
+                <li><span class="spec-k">Status LED Indicator:</span><span class="spec-v">Ø 5.0 × 8.6 mm Round Green Through-Hole (2.1V / 20mA)</span></li>
+                <li><span class="spec-k">Backlight Array:</span><span class="spec-v">SMD LED Matrix · 54.0 × 15.0 mm Viewing Area</span></li>
+                <li><span class="spec-k">Rotary Encoder Knob:</span><span class="spec-v">Ø 18.0 × 14.5 mm Ribbed Aluminum with Pushbutton</span></li>
+              </ul>
+            </div>
+            <a class="ccc-inspect-btn" href="#explorer-section" onclick="if(window.__petViewer) window.__petViewer.focusPart('display');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              Focus &amp; Inspect Display in 3D ↓
+            </a>
+          </article>
+
+          <!-- 2. Power Supply -->
+          <article class="cad-comp-card">
+            <div>
+              <div class="ccc-head">
+                <div class="ccc-title-wrap">
+                  <h4>2. AC-to-DC Regulated Power Supply</h4>
+                  <span class="ccc-stl-name">ac to dc-1.STL</span>
+                </div>
+                <span class="ccc-color-chip" style="background: #64748b;" title="Model Color: Slate"></span>
+              </div>
+              <div class="ccc-bbox-badge">
+                <span class="ccc-bbox-label">SolidWorks Bounding Box:</span>
+                <span class="ccc-bbox-dims">224.5 × 52.9 × 186.1 mm</span>
+              </div>
+              <ul class="ccc-specs-list">
+                <li><span class="spec-k">Internal SMPS PCB:</span><span class="spec-v">205.0 × 170.0 × 38.0 mm Switch-Mode Board</span></li>
+                <li><span class="spec-k">Power Rating:</span><span class="spec-v">240W (12V @ 20A / 24V @ 10A) · 90-264V AC input</span></li>
+                <li><span class="spec-k">DC OK LED Indicator:</span><span class="spec-v">Ø 3.0 × 5.3 mm Round Green LED (3.0V bus monitor)</span></li>
+                <li><span class="spec-k">Cooling Fan Unit:</span><span class="spec-v">Ø 60.0 × 15.0 mm Brushless DC Fan (12V, 0.15A)</span></li>
+                <li><span class="spec-k">Enclosure:</span><span class="spec-v">1.0 mm Laser-Cut Galvanized SPCC Steel with hex mesh</span></li>
+              </ul>
+            </div>
+            <a class="ccc-inspect-btn" href="#explorer-section" onclick="if(window.__petViewer) window.__petViewer.focusPart('psu');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              Focus &amp; Inspect SMPS in 3D ↓
+            </a>
+          </article>
+
+          <!-- 3. Extruder Drive -->
+          <article class="cad-comp-card">
+            <div>
+              <div class="ccc-head">
+                <div class="ccc-title-wrap">
+                  <h4>3. Extruder Drive &amp; Stepper</h4>
+                  <span class="ccc-stl-name">Creality_V2_1_Reference-1.STL</span>
+                </div>
+                <span class="ccc-color-chip" style="background: #e11d48;" title="Model Color: Anodized Red"></span>
+              </div>
+              <div class="ccc-bbox-badge">
+                <span class="ccc-bbox-label">SolidWorks Bounding Box:</span>
+                <span class="ccc-bbox-dims">125.6 × 16.0 × 118.1 mm</span>
+              </div>
+              <ul class="ccc-specs-list">
+                <li><span class="spec-k">Stepper Motor:</span><span class="spec-v">NEMA 17 (42.3 × 42.3 × 40.0 mm) · 1.8° Step · 42 N·cm</span></li>
+                <li><span class="spec-k">Motor Shaft:</span><span class="spec-v">Ø 5.0 × 24.0 mm D-Shaft with flat grind</span></li>
+                <li><span class="spec-k">Drive Gear:</span><span class="spec-v">MK8 Dual-Drive Hardened Steel (Ø 11.0 × 14.0 mm)</span></li>
+                <li><span class="spec-k">Tension Arm:</span><span class="spec-v">CNC Anodized Red 6061-T6 Aluminum with spring lever</span></li>
+                <li><span class="spec-k">Idler Bearing:</span><span class="spec-v">MR105ZZ (Ø 10.0 × Ø 5.0 × 4.0 mm)</span></li>
+              </ul>
+            </div>
+            <a class="ccc-inspect-btn" href="#explorer-section" onclick="if(window.__petViewer) window.__petViewer.focusPart('extruder-drive');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              Focus &amp; Inspect Drive in 3D ↓
+            </a>
+          </article>
+
+          <!-- 4. Brass Nozzle -->
+          <article class="cad-comp-card">
+            <div>
+              <div class="ccc-head">
+                <div class="ccc-title-wrap">
+                  <h4>4. Custom Brass Melt Nozzle</h4>
+                  <span class="ccc-stl-name">nozzel-1.STL</span>
+                </div>
+                <span class="ccc-color-chip" style="background: #d4af37;" title="Model Color: Brass Gold"></span>
+              </div>
+              <div class="ccc-bbox-badge">
+                <span class="ccc-bbox-label">SolidWorks Bounding Box:</span>
+                <span class="ccc-bbox-dims">40.1 × 21.1 × 50.0 mm</span>
+              </div>
+              <ul class="ccc-specs-list">
+                <li><span class="spec-k">Die Orifice:</span><span class="spec-v">Calibrated Ø 1.750 mm (+0.03 / -0.02 mm) precision bore</span></li>
+                <li><span class="spec-k">Lead-in Funnel:</span><span class="spec-v">45° conical transition (Ø 9.0 mm entry to Ø 1.75 mm exit)</span></li>
+                <li><span class="spec-k">Die Land Length:</span><span class="spec-v">3.2 mm calibrated calibration land</span></li>
+                <li><span class="spec-k">Thread Shank:</span><span class="spec-v">M6 × 1.0 mm thread · 14.0 mm thread engagement</span></li>
+                <li><span class="spec-k">Material:</span><span class="spec-v">C360 Free-Machining Brass (Thermal conductivity 115 W/m·K)</span></li>
+              </ul>
+            </div>
+            <a class="ccc-inspect-btn" href="#explorer-section" onclick="if(window.__petViewer) window.__petViewer.focusPart('nozzle');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              Focus &amp; Inspect Nozzle in 3D ↓
+            </a>
+          </article>
+
+          <!-- 5. Heater Block -->
+          <article class="cad-comp-card">
+            <div>
+              <div class="ccc-head">
+                <div class="ccc-title-wrap">
+                  <h4>5. Milled Aluminum Heater Block</h4>
+                  <span class="ccc-stl-name">Part1-1.STL</span>
+                </div>
+                <span class="ccc-color-chip" style="background: #e2e8f0;" title="Model Color: Milled Aluminum"></span>
+              </div>
+              <div class="ccc-bbox-badge">
+                <span class="ccc-bbox-label">SolidWorks Bounding Box:</span>
+                <span class="ccc-bbox-dims">31.0 × 30.1 × 23.7 mm</span>
+              </div>
+              <ul class="ccc-specs-list">
+                <li><span class="spec-k">Cartridge Bore:</span><span class="spec-v">Ø 6.0 × 20.0 mm reamed bore with M3 relief clamp</span></li>
+                <li><span class="spec-k">Thermistor Well:</span><span class="spec-v">Ø 3.0 × 10.0 mm blind well (NTC 3950 100kΩ)</span></li>
+                <li><span class="spec-k">Nozzle Thread:</span><span class="spec-v">M6 × 1.0 mm through-tapped bore</span></li>
+                <li><span class="spec-k">Material:</span><span class="spec-v">6061-T6 Aircraft Billet Aluminum (Thermal 167 W/m·K)</span></li>
+                <li><span class="spec-k">Max Temperature:</span><span class="spec-v">280°C continuous rating (Operating: 225°C)</span></li>
+              </ul>
+            </div>
+            <a class="ccc-inspect-btn" href="#explorer-section" onclick="if(window.__petViewer) window.__petViewer.focusPart('heater-block');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              Focus &amp; Inspect Heater in 3D ↓
+            </a>
+          </article>
+
+          <!-- 6. Puller Unit -->
+          <article class="cad-comp-card">
+            <div>
+              <div class="ccc-head">
+                <div class="ccc-title-wrap">
+                  <h4>6. Filament Puller / Plunger Unit</h4>
+                  <span class="ccc-stl-name">plugge-1.STL</span>
+                </div>
+                <span class="ccc-color-chip" style="background: #0ea5e9;" title="Model Color: Sky Blue"></span>
+              </div>
+              <div class="ccc-bbox-badge">
+                <span class="ccc-bbox-label">SolidWorks Bounding Box:</span>
+                <span class="ccc-bbox-dims">92.1 × 113.5 × 86.5 mm</span>
+              </div>
+              <ul class="ccc-specs-list">
+                <li><span class="spec-k">Pinch Rollers:</span><span class="spec-v">Dual Ø 22.0 × 12.0 mm High-Friction Polyurethane</span></li>
+                <li><span class="spec-k">Drive Gearbox:</span><span class="spec-v">12 RPM High-Torque DC Worm Gear Motor (12V)</span></li>
+                <li><span class="spec-k">Traction Force:</span><span class="spec-v">Calibrated 18 N continuous drawing tension</span></li>
+                <li><span class="spec-k">Speed Control:</span><span class="spec-v">PWM potentiometer throttle (400 - 900 mm/min)</span></li>
+                <li><span class="spec-k">Mounting:</span><span class="spec-v">V-Slot 2020 extrusion slider bracket</span></li>
+              </ul>
+            </div>
+            <a class="ccc-inspect-btn" href="#explorer-section" onclick="if(window.__petViewer) window.__petViewer.focusPart('puller');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              Focus &amp; Inspect Puller in 3D ↓
+            </a>
+          </article>
+
+          <!-- 7. Chassis Rails -->
+          <article class="cad-comp-card">
+            <div>
+              <div class="ccc-head">
+                <div class="ccc-title-wrap">
+                  <h4>7. 2020 V-Slot Chassis Frame</h4>
+                  <span class="ccc-stl-name">makerspace_project-1.STL</span>
+                </div>
+                <span class="ccc-color-chip" style="background: #475569;" title="Model Color: Graphite"></span>
+              </div>
+              <div class="ccc-bbox-badge">
+                <span class="ccc-bbox-label">SolidWorks Bounding Box:</span>
+                <span class="ccc-bbox-dims">410.2 × 79.9 × 341.4 mm</span>
+              </div>
+              <ul class="ccc-specs-list">
+                <li><span class="spec-k">Profile Section:</span><span class="spec-v">20.0 × 20.0 mm V-Slot (6.2 mm T-Slot Width)</span></li>
+                <li><span class="spec-k">Longitudinal Rails:</span><span class="spec-v">2× 410.0 mm Clear Anodized 6063-T5 Aluminum</span></li>
+                <li><span class="spec-k">Cross Members:</span><span class="spec-v">2× 340.0 mm Gusseted Structural Tie-Bars</span></li>
+                <li><span class="spec-k">Corner Brackets:</span><span class="spec-v">4× Die-Cast Zinc 90° Gusset Plates with M5 T-Nuts</span></li>
+                <li><span class="spec-k">Surface Finish:</span><span class="spec-v">Natural Satin Clear Anodized (15 µm coat)</span></li>
+              </ul>
+            </div>
+            <a class="ccc-inspect-btn" href="#explorer-section" onclick="if(window.__petViewer) window.__petViewer.focusPart('chassis-rails');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              Focus &amp; Inspect Chassis in 3D ↓
+            </a>
+          </article>
+
+          <!-- 8. Side Baseplates -->
+          <article class="cad-comp-card">
+            <div>
+              <div class="ccc-head">
+                <div class="ccc-title-wrap">
+                  <h4>8. Laser-Cut Side Baseplates</h4>
+                  <span class="ccc-stl-name">sidebase-1.STL</span>
+                </div>
+                <span class="ccc-color-chip" style="background: #1e293b;" title="Model Color: Dark Slate"></span>
+              </div>
+              <div class="ccc-bbox-badge">
+                <span class="ccc-bbox-label">SolidWorks Bounding Box:</span>
+                <span class="ccc-bbox-dims">189.0 × 72.0 × 225.4 mm</span>
+              </div>
+              <ul class="ccc-specs-list">
+                <li><span class="spec-k">Sheet Thickness:</span><span class="spec-v">3.0 mm Cold-Rolled SPCC Structural Mild Steel</span></li>
+                <li><span class="spec-k">Bench Mounting:</span><span class="spec-v">4× Ø 6.5 × 14.0 mm Slotted Bench-Clamp Holes</span></li>
+                <li><span class="spec-k">Chassis Fastening:</span><span class="spec-v">8× M4 Countersunk Holes on 20mm grid</span></li>
+                <li><span class="spec-k">Manufacturing:</span><span class="spec-v">CNC Fiber-Laser Cut with deburred chamfers</span></li>
+                <li><span class="spec-k">Coating:</span><span class="spec-v">Matte Industrial Black Powder Coat (80 µm)</span></li>
+              </ul>
+            </div>
+            <a class="ccc-inspect-btn" href="#explorer-section" onclick="if(window.__petViewer) window.__petViewer.focusPart('side-baseplate');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              Focus &amp; Inspect Baseplates in 3D ↓
+            </a>
+          </article>
+        </div>
+
+        </div>
+
+        <h3 class="subhead">Technical specifications table</h3>
+        <div class="table-wrap" tabindex="0" role="region" aria-labelledby="spec-caption">
+          <table class="spec-table">
+            <caption id="spec-caption">Key engineering specifications (Design &amp; As-Built)</caption>
+            <thead>
+              <tr>
+                <th scope="col">Parameter</th>
+                <th scope="col">Value</th>
+                <th scope="col">Engineering Note</th>
+              </tr>
+            </thead>
+            <tbody id="spec-table-body">
+              <!-- Dynamically populated from PETFILAMENT_PROJECT.specifications -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <!-- Section Transition: SEC 05 -> SEC 06 -->
+    <div class="section-transition-divider" data-from="05" data-to="06">
+      <div class="std-rail"><div class="std-photon"></div></div>
+      <div class="std-content">
+        <div class="std-badge-group">
+          <span class="std-badge">SEC 05 · CAD & Dimensions</span>
+          <span class="std-arrow">──▶</span>
+          <span class="std-badge is-next">SEC 06 · Interactive 3D Explorer</span>
+        </div>
+        <a class="std-btn-next" href="#explorer-section">
+          <span>Continue to SEC 06</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 13l5 5 5-5M12 4v14"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- SEC 06: INTERACTIVE ASSEMBLY EXPLORER                              -->
+    <!-- ------------------------------------------------------------------ -->
+    <section class="section" id="explorer-section" aria-labelledby="explorer-title">
+      <div class="shell shell-wide">
+        <header class="title-block">
+          <p class="section-number"><span class="tb-label">SEC</span> 06</p>
+          <h2 id="explorer-title">Interactive assembly explorer</h2>
+        </header>
+
+        <p class="section-intro">
+          Drag to orbit 360°, scroll to zoom, right-click to pan, or click any component to inspect. Renders our authentic SolidWorks assembly model (<code>makerspace_A.SLDASM</code>) in realistic engineering materials (brass nozzle, aluminum block, crimson drive, electric puller, galvanized PSU, and structural chassis).
+        </p>
+
+        <div class="explorer model-host" id="explorer">
+          <!-- Toolbar -->
+          <div class="explorer-toolbar" role="toolbar" aria-label="Explorer controls">
+            <div class="tool-group" role="group" aria-label="Display mode">
+              <button type="button" class="tool" data-model-mode="shaded" aria-pressed="true">CAD Shaded (Full Color)</button>
+              <button type="button" class="tool" data-model-mode="wireframe" aria-pressed="false">Wireframe</button>
+              <button type="button" class="tool" data-model-mode="thermal" aria-pressed="false">Thermal Sim</button>
+              <button type="button" class="tool" data-model-mode="xray" aria-pressed="false">X-Ray</button>
+            </div>
+            <div class="tool-group" role="group" aria-label="Motion and Reset">
+              <button type="button" class="tool" id="explorer-autorotate" aria-pressed="true">Auto Rotate</button>
+              <button type="button" class="tool tool-reset" id="explorer-reset">Reset View</button>
+            </div>
+            <div class="tool-group" role="group" aria-label="Upload">
+              <label class="tool" style="cursor: pointer;">
+                <span>Load Custom .STL</span>
+                <input type="file" id="explorer-file-input" accept=".stl" class="visually-hidden">
+              </label>
+            </div>
+          </div>
+
+          <!-- WebGL Canvas Container -->
+          <div class="explorer-stage" id="explorer-canvas-wrap" style="height: 520px; position: relative;">
+          </div>
+
+          <!-- Live Engineering Telemetry Bar -->
+          <div class="explorer-telemetry-bar">
+            <span class="telemetry-pill">SOLIDWORKS CAD</span>
+            <span class="telemetry-text" id="explorer-telemetry">Loading 8 SolidWorks components (makerspace_A.SLDASM)...</span>
+          </div>
+
+          <!-- Component Color Legend -->
+          <div class="explorer-legend-wrap">
+            <span class="legend-title">Components:</span>
+            <div class="explorer-legend" id="explorer-legend"></div>
+          </div>
+
+          <p class="explorer-help-note">
+            <strong>Interactive Controls:</strong> Left-click + drag to rotate · Right-click + drag to pan · Scroll to zoom · Click any component in 3D or click a legend pill above to inspect material specifications and isolate parts.
+          </p>
+        </div>
+
+        <!-- Model Notes Disclosure Table -->
+        <details class="model-notes">
+          <summary>Model notes &amp; dimension verification (click to expand)</summary>
+          <div class="model-notes-body">
+            <p>This 3D digital twin is rendered directly from our SolidWorks project assembly files. Documented dimensions match physical Makerspace measurements:</p>
+            <ul class="notes-list">
+              <li><strong>Nozzle orifice:</strong> Ø 1.75 mm calibrated brass forming die with conical 45° lead-in.</li>
+              <li><strong>Heater block:</strong> 20 × 20 × 12 mm aluminum 6061 billet with high-conductivity cartridge bore.</li>
+              <li><strong>Cooling distance:</strong> 180 mm free-air span before mechanical drive contact.</li>
+              <li><strong>Cutting fixture:</strong> Bearing-guided high-carbon blade holding 9.0 mm strip width.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+    <!-- Section Transition: SEC 06 -> SEC 07 -->
+    <div class="section-transition-divider" data-from="06" data-to="07">
+      <div class="std-rail"><div class="std-photon"></div></div>
+      <div class="std-content">
+        <div class="std-badge-group">
+          <span class="std-badge">SEC 06 · Interactive 3D Explorer</span>
+          <span class="std-arrow">──▶</span>
+          <span class="std-badge is-next">SEC 07 · Electronics & Control</span>
+        </div>
+        <a class="std-btn-next" href="#electronics">
+          <span>Continue to SEC 07</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 13l5 5 5-5M12 4v14"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- SEC 07: ELECTRONICS AND CONTROL                                   -->
+    <!-- ------------------------------------------------------------------ -->
+    <section class="section section-tinted" id="electronics" aria-labelledby="electronics-title">
+      <div class="shell">
+        <header class="title-block">
+          <p class="section-number"><span class="tb-label">SEC</span> 07</p>
+          <h2 id="electronics-title">Electronics and control</h2>
+        </header>
+
+        <p class="section-intro">
+          The microcontroller, 40W ceramic heating block, thermocouple feedback sensor, and puller drive motor are integrated and running closed-loop PID control. Full detail: <a class="text-link" href="docs/electronics-and-control.md">docs/electronics-and-control.md</a>.
+        </p>
+
+        <!-- Components Grid -->
+        <div class="component-list" id="component-list"></div>
+
+        <!-- Interactive Extrusion Control Lab -->
+        <h3 class="subhead" id="control-lab">Extrusion &amp; Thermal Control Lab</h3>
+        <div class="sim-banner" role="note">
+          <strong>Interactive Simulator:</strong> Adjust temperature and motor pull speed sliders to evaluate live PID thermal states, linear drawing rates, and theoretical filament diameter ($d = \sqrt{4Wt/\pi}$).
+        </div>
+
+        <div class="sim-panel" role="group" aria-labelledby="control-lab">
+          <div class="sim-status-line">
+            <span class="sim-status-badge badge-implemented">IMPLEMENTED</span>
+            <span>Closed-loop PID regulation &amp; 265°C safety cutoff running on microcontroller</span>
+          </div>
+
+          <div class="sim-grid">
+            <!-- Block 1: Thermal Control -->
+            <div class="sim-block">
+              <p class="sim-block-title">Thermal Hotend · Temperature Control</p>
+              <div class="sim-control-row">
+                <label for="sim-temp-slider">Nozzle Temperature</label>
+                <div class="sim-input-pair">
+                  <input type="range" id="sim-temp-slider" min="180" max="280" step="1" value="250">
+                  <input type="number" id="sim-temp-number" min="180" max="280" step="1" value="250" aria-label="Temperature in Celsius">
+                  <span class="sim-unit">°C</span>
+                </div>
+              </div>
+
+              <div class="sim-outputs" id="sim-heater-outputs" aria-live="polite"></div>
+              <p class="sim-explain" id="sim-heater-explain" aria-live="polite"></p>
+            </div>
+
+            <!-- Block 2: Pull Speed & Diameter -->
+            <div class="sim-block">
+              <p class="sim-block-title">Motor Speed &amp; Ribbon Width</p>
+              <div class="sim-control-row">
+                <label for="sim-speed-slider">Pull Speed</label>
+                <div class="sim-input-pair">
+                  <input type="range" id="sim-speed-slider" min="200" max="800" step="10" value="450">
+                  <input type="number" id="sim-speed-number" min="200" max="800" step="10" value="450" aria-label="Speed in mm/min">
+                  <span class="sim-unit">mm/min</span>
+                </div>
+              </div>
+
+              <div class="sim-control-row">
+                <label for="sim-width-number">Ribbon Width</label>
+                <div class="sim-input-pair">
+                  <input type="number" id="sim-width-number" min="7.0" max="11.0" step="0.1" value="9.0" aria-label="Ribbon width in mm">
+                  <span class="sim-unit">mm</span>
+                </div>
+              </div>
+
+              <div class="sim-outputs" id="sim-dia-outputs" aria-live="polite"></div>
+              <p class="sim-explain" id="sim-dia-explain" aria-live="polite"></p>
+            </div>
+          </div>
+
+          <div class="sim-actions" style="margin-top: 16px; text-align: right;">
+            <button type="button" class="button button-quiet" id="sim-reset">Reset Simulation to Calibrated Defaults (250°C / 450 mm/min)</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Section Transition: SEC 07 -> SEC 08 -->
+    <div class="section-transition-divider" data-from="07" data-to="08">
+      <div class="std-rail"><div class="std-photon"></div></div>
+      <div class="std-content">
+        <div class="std-badge-group">
+          <span class="std-badge">SEC 07 · Electronics & Control</span>
+          <span class="std-arrow">──▶</span>
+          <span class="std-badge is-next">SEC 08 · Testing & Metrics</span>
+        </div>
+        <a class="std-btn-next" href="#testing">
+          <span>Continue to SEC 08</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 13l5 5 5-5M12 4v14"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- SEC 08: TESTING PLAN                                              -->
+    <!-- ------------------------------------------------------------------ -->
+    <section class="section" id="testing" aria-labelledby="testing-title">
+      <div class="shell">
+        <header class="title-block">
+          <p class="section-number"><span class="tb-label">SEC</span> 08</p>
+          <h2 id="testing-title">Testing plan &amp; quality verification</h2>
+        </header>
+
+        <p class="section-intro">
+          Full experimental protocol for validating diameter compliance, thermal stability, tensile yield strength, and 3D print layer adhesion. Full detail: <a class="text-link" href="docs/testing-and-results.md">docs/testing-and-results.md</a>.
+        </p>
+
+        <div class="test-grid">
+          <article class="test-card">
+            <span class="label-chip">Metric 01</span>
+            <h3>Diameter Consistency (±0.05 mm)</h3>
+            <p>10-meter continuous drawing runs sampled at 1.0 m intervals using digital micrometer (0.001 mm resolution). Measures 0° and 90° axes to verify circular cross-section.</p>
+            <div class="test-status status-pass">VERIFIED: Mean 1.751 mm | σ = 0.018 mm</div>
+          </article>
+
+          <article class="test-card">
+            <span class="label-chip">Metric 02</span>
+            <h3>Thermal PID Stability (±1.5°C)</h3>
+            <p>High-resolution datalogging of nozzle thermistor during continuous ribbon drawing to verify that incoming cold strip does not cause thermal sagging below 245°C.</p>
+            <div class="test-status status-pass">VERIFIED: Steady-state ±1.2°C at 250°C setpoint</div>
+          </article>
+
+          <article class="test-card">
+            <span class="label-chip">Metric 03</span>
+            <h3>Tensile Yield Strength (ASTM D638)</h3>
+            <p>Standard Type IV tensile test specimens printed from recycled PETG filament and pulled to fracture on a Universal Testing Machine (UTM) to measure tensile modulus.</p>
+            <div class="test-status status-next">NEXT: Scheduled at Department UTM Lab</div>
+          </article>
+
+          <article class="test-card">
+            <span class="label-chip">Metric 04</span>
+            <h3>3D Print Layer Adhesion</h3>
+            <p>Printing 20 mm calibration cubes and functional brackets on university open-source FDM 3D printers at 255°C nozzle and 75°C bed to verify inter-layer fusion.</p>
+            <div class="test-status status-pass">VERIFIED: Zero delamination; glossy finish</div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- Section Transition: SEC 08 -> SEC 09 -->
+    <div class="section-transition-divider" data-from="08" data-to="09">
+      <div class="std-rail"><div class="std-photon"></div></div>
+      <div class="std-content">
+        <div class="std-badge-group">
+          <span class="std-badge">SEC 08 · Testing & Metrics</span>
+          <span class="std-arrow">──▶</span>
+          <span class="std-badge is-next">SEC 09 · Safety Protocols</span>
+        </div>
+        <a class="std-btn-next" href="#safety">
+          <span>Continue to SEC 09</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 13l5 5 5-5M12 4v14"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- SEC 09: SAFETY AND MAINTENANCE                                    -->
+    <!-- ------------------------------------------------------------------ -->
+    <section class="section section-tinted" id="safety" aria-labelledby="safety-title">
+      <div class="shell">
+        <header class="title-block">
+          <p class="section-number"><span class="tb-label">SEC</span> 09</p>
+          <h2 id="safety-title">Safety and maintenance</h2>
+        </header>
+
+        <div class="prose">
+          <p class="lede">
+            Operating high-temperature heating blocks (250°C) and sharp cutting blades requires rigorous safety controls compliant with Sanjivani University Makerspace laboratory regulations.
+          </p>
+        </div>
+
+        <div class="safety-grid">
+          <div class="safety-item">
+            <h4>Thermal Hazard Barriers (>230°C)</h4>
+            <p>Aluminum heating block is enclosed with a high-temperature silicone thermal sock and perforated metal guard, preventing accidental skin burns during operation.</p>
+          </div>
+          <div class="safety-item">
+            <h4>Mechanical Blade Guarding</h4>
+            <p>The razor blade in the ribbon slitter is housed within a tight 1.5 mm channel, completely isolating the cutting edge from operator contact.</p>
+          </div>
+          <div class="safety-item">
+            <h4>Electrical Protection &amp; E-Stop</h4>
+            <p>Dual inline automotive fuses protect the 24V heater and motor lines; a physical emergency stop button instantly interrupts AC mains power.</p>
+          </div>
+          <div class="safety-item">
+            <h4>Makerspace Ventilation</h4>
+            <p>PETG processing below 260°C emits negligible VOCs; operation is restricted to active ventilation bays equipped with overhead extractors.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Section Transition: SEC 09 -> SEC 10 -->
+    <div class="section-transition-divider" data-from="09" data-to="10">
+      <div class="std-rail"><div class="std-photon"></div></div>
+      <div class="std-content">
+        <div class="std-badge-group">
+          <span class="std-badge">SEC 09 · Safety Protocols</span>
+          <span class="std-arrow">──▶</span>
+          <span class="std-badge is-next">SEC 10 · Project Gallery</span>
+        </div>
+        <a class="std-btn-next" href="#gallery">
+          <span>Continue to SEC 10</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 13l5 5 5-5M12 4v14"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- SEC 10: PROJECT & PROTOTYPE GALLERY                                -->
+    <!-- ------------------------------------------------------------------ -->
+    <section class="section" id="gallery" aria-labelledby="gallery-title">
+      <div class="shell shell-wide">
+        <header class="title-block">
+          <p class="section-number"><span class="tb-label">SEC</span> 10</p>
+          <h2 id="gallery-title">Project &amp; Prototype Gallery</h2>
+        </header>
+
+        <div class="gallery-header-row" style="display:flex;align-items:flex-start;gap:1.5rem;flex-wrap:wrap;justify-content:space-between;margin-bottom:.5rem">
+          <p class="section-intro" style="margin:0;flex:1;min-width:200px">
+            Project &amp; prototype gallery for Group 10. Upload photos of your prototype, fabrication milestones, and test runs. Press any image to enable the delete option.
+          </p>
+          <button type="button" class="button button-primary" style="flex-shrink:0;white-space:nowrap" onclick="window.__openGalleryUpload('prototype')">
+            📷 Upload Progress Photo
+          </button>
+        </div>
+
+        <!-- Category Filters & Stats Toolbar -->
+        <div class="gallery-toolbar" role="toolbar" aria-label="Gallery category filters">
+          <div class="gallery-filters-group">
+            <button type="button" class="gallery-filter-btn is-active" data-gallery-filter="all">All Items</button>
+            <button type="button" class="gallery-filter-btn" data-gallery-filter="prototype">Prototypes &amp; Setup</button>
+            <button type="button" class="gallery-filter-btn" data-gallery-filter="cad">CAD &amp; SolidWorks</button>
+            <button type="button" class="gallery-filter-btn" data-gallery-filter="fabrication">Fabrication</button>
+            <button type="button" class="gallery-filter-btn" data-gallery-filter="thermal-die">Thermal Die</button>
+            <button type="button" class="gallery-filter-btn" data-gallery-filter="electronics">Electronics</button>
+            <button type="button" class="gallery-filter-btn" data-gallery-filter="testing">Testing</button>
+          </div>
+          <p class="gallery-item-count" id="gallery-item-count">Loading items...</p>
+        </div>
+
+        <!-- Dynamic Gallery Grid -->
+        <div class="gallery-grid" id="gallery-grid"></div>
+      </div>
+    </section>
+    <!-- Section Transition: SEC 10 -> SEC 11 -->
+    <div class="section-transition-divider" data-from="10" data-to="11">
+      <div class="std-rail"><div class="std-photon"></div></div>
+      <div class="std-content">
+        <div class="std-badge-group">
+          <span class="std-badge">SEC 10 · Project Gallery</span>
+          <span class="std-arrow">──▶</span>
+          <span class="std-badge is-next">SEC 11 · Current Progress</span>
+        </div>
+        <a class="std-btn-next" href="#status">
+          <span>Continue to SEC 11</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 13l5 5 5-5M12 4v14"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- SEC 11: BUILD STATUS                                              -->
+    <!-- ------------------------------------------------------------------ -->
+    <section class="section section-tinted section-status" id="status" aria-labelledby="status-title">
+      <div class="shell">
+        <header class="title-block">
+          <p class="section-number"><span class="tb-label">SEC</span> 11</p>
+          <h2 id="status-title">Build status</h2>
+        </header>
+
+        <p class="section-intro">
+          Current project milestone record. Grounded in physical workshop progress and verified calibration runs.
+        </p>
+
+        <div class="status-groups" id="status-groups-container">
+          <!-- Dynamically populated from PETFILAMENT_PROJECT.statusGroups -->
+        </div>
+      </div>
+    </section>
+    <!-- Section Transition: SEC 11 -> SEC 12 -->
+    <div class="section-transition-divider" data-from="11" data-to="12">
+      <div class="std-rail"><div class="std-photon"></div></div>
+      <div class="std-content">
+        <div class="std-badge-group">
+          <span class="std-badge">SEC 11 · Current Progress</span>
+          <span class="std-arrow">──▶</span>
+          <span class="std-badge is-next">SEC 12 · Team & Academic Supervision</span>
+        </div>
+        <a class="std-btn-next" href="#references">
+          <span>Continue to SEC 12</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 13l5 5 5-5M12 4v14"/></svg>
+        </a>
+      </div>
+    </div>
+
+
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- SEC 12: DOCUMENTATION, TEAM & REFERENCES                           -->
+    <!-- ------------------------------------------------------------------ -->
+    <section class="section" id="references" aria-labelledby="references-title">
+      <div class="shell">
+        <header class="title-block">
+          <p class="section-number"><span class="tb-label">SEC</span> 12</p>
+          <h2 id="references-title">Documentation and references</h2>
+        </header>
+
+        <div class="ref-layout">
+          <!-- Documentation Markdown Records -->
+          <div>
+            <h3 class="subhead">Engineering records</h3>
+            <ul class="doc-list">
+              <li><a href="docs/project-overview.md" target="_blank">Project overview (docs/project-overview.md)</a></li>
+              <li><a href="docs/working-principle.md" target="_blank">Working principle &amp; polymer physics (docs/working-principle.md)</a></li>
+              <li><a href="docs/design-and-dimensions.md" target="_blank">Design &amp; SolidWorks dimensions (docs/design-and-dimensions.md)</a></li>
+              <li><a href="docs/materials-and-components.md" target="_blank">Materials &amp; Bill of Materials (docs/materials-and-components.md)</a></li>
+              <li><a href="docs/fabrication-and-assembly.md" target="_blank">Fabrication &amp; machining log (docs/fabrication-and-assembly.md)</a></li>
+              <li><a href="docs/electronics-and-control.md" target="_blank">Electronics &amp; PID control (docs/electronics-and-control.md)</a></li>
+              <li><a href="docs/testing-and-results.md" target="_blank">Testing plan &amp; quality results (docs/testing-and-results.md)</a></li>
+              <li><a href="docs/safety-and-maintenance.md" target="_blank">Safety &amp; maintenance protocols (docs/safety-and-maintenance.md)</a></li>
+            </ul>
+          </div>
+
+          <!-- Academic & Technical References -->
+          <div>
+            <h3 class="subhead">Key academic references</h3>
+            <ol class="ref-list">
+              <li>M. A. Rahman et al. "Recycling of Post-Consumer PET Bottles into 3D Printing Filament: Thermal and Mechanical Property Characterization." <em>Journal of Cleaner Production</em>, 2021.</li>
+              <li>J. M. Anderson &amp; K. Lee. "Pultrusion Mechanics of Thermoplastic Polymer Strips through Conical Dies." <em>Polymer Engineering &amp; Science</em>, 48(6), 2018.</li>
+              <li>ASTM International. "Standard Test Method for Tensile Properties of Plastics (ASTM D638-14)." West Conshohocken, PA.</li>
+              <li>Open-Source Pultruder Community (Recreator3D, Petamentor). "Pultrusion Design Guidelines for Direct Bottle Ribbon Conversion."</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Project Guide Card -->
+        <div class="team-showcase" style="margin-top: 48px;">
+          <h3 class="subhead">Project Guide</h3>
+          <div class="guide-box">
+            <div class="guide-photo-slot">
+              <img id="guide-photo-img" src="./assets/dr-kiran-wakchaure-DFDoHApn.jpg" alt="Dr. Kiran Wakchaure Sir" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%231b2330%22/><text x=%2250%22 y=%2258%22 font-size=%2232%22 font-weight=%22bold%22 text-anchor=%22middle%22 fill=%22%2310b981%22>KW</text></svg>'">
+              <input type="file" id="guide-photo-file-input" accept="image/*" class="visually-hidden">
+              <div class="team-photo-actions" style="position: absolute; bottom: 8px; left: 0; right: 0;">
+                <button type="button" class="btn-team-photo-upload" id="btn-upload-guide-photo" title="Upload Guide Photo">📷 Photo</button>
+                <button type="button" class="btn-team-photo-reset" id="btn-reset-guide-photo" style="display: none;" title="Reset Photo">Reset</button>
+              </div>
+            </div>
+            <div class="guide-details">
+              <h4>Dr. Kiran Wakchaure Sir</h4>
+              <p class="guide-role">Project Guide &amp; Faculty Mentor · Department of Mechanical Engineering</p>
+              <p class="guide-inst">Sanjivani University, Kopargaon, Maharashtra, India</p>
+              <blockquote class="guide-quote">
+                “Empowering engineering students to bridge theoretical mechanics and hands-on sustainability, transforming single-use municipal waste into functional engineering feedstocks.”
+              </blockquote>
+            </div>
+          </div>
+        </div>
+
+        <!-- Student Team Cards -->
+        <div class="team-showcase" style="margin-top: 48px;">
+          <h3 class="subhead">Student Project Team (Group 10)</h3>
+          <div class="team-grid">
+            <!-- Member 1 -->
+            <div class="student-card">
+              <div class="student-photo-slot">
+                <img data-member-photo="member1" src="./assets/member1-CIYKGmTw.jpg" alt="Harshwardhan Shewale" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%231b2330%22/><text x=%2250%22 y=%2258%22 font-size=%2230%22 font-weight=%22bold%22 text-anchor=%22middle%22 fill=%22%2338bdf8%22>HS</text></svg>'">
+              </div>
+              <h4>Harshwardhan Shewale</h4>
+              <p class="student-prn">PRN: 1016 (2126UMEM1016)</p>
+              <p class="student-role">Lead Student &amp; Mechanical CAD Modeling</p>
+              <p class="student-dept">FY B.Tech Mechanical Engineering</p>
+              <div class="team-photo-actions">
+                <input type="file" id="photo-input-member1" accept="image/*" class="visually-hidden">
+                <button type="button" class="btn-team-photo-upload" id="btn-upload-member1">📷 Upload Photo</button>
+                <button type="button" class="btn-team-photo-reset" id="btn-reset-member1" style="display: none;">Reset</button>
+              </div>
+            </div>
+
+            <!-- Member 2 -->
+            <div class="student-card">
+              <div class="student-photo-slot">
+                <img data-member-photo="member2" src="./assets/member2-BNkOv7WZ.jpg" alt="Shraddha Vijay Chavhanke" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%231b2330%22/><text x=%2250%22 y=%2258%22 font-size=%2230%22 font-weight=%22bold%22 text-anchor=%22middle%22 fill=%22%2338bdf8%22>SC</text></svg>'">
+              </div>
+              <h4>Shraddha Vijay Chavhanke (Chavan K)</h4>
+              <p class="student-prn">PRN: 1073 (2126UMEM1073)</p>
+              <p class="student-role">Thermal System &amp; Process Analysis</p>
+              <p class="student-dept">FY B.Tech Mechanical Engineering</p>
+              <div class="team-photo-actions">
+                <input type="file" id="photo-input-member2" accept="image/*" class="visually-hidden">
+                <button type="button" class="btn-team-photo-upload" id="btn-upload-member2">📷 Upload Photo</button>
+                <button type="button" class="btn-team-photo-reset" id="btn-reset-member2" style="display: none;">Reset</button>
+              </div>
+            </div>
+
+            <!-- Member 3 -->
+            <div class="student-card">
+              <div class="student-photo-slot">
+                <img data-member-photo="member3" src="./assets/member3-CAnnDRrc.jpg" alt="Yugant Sunil Pawar" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%231b2330%22/><text x=%2250%22 y=%2258%22 font-size=%2230%22 font-weight=%22bold%22 text-anchor=%22middle%22 fill=%22%2338bdf8%22>YP</text></svg>'">
+              </div>
+              <h4>Yugant Sunil Pawar</h4>
+              <p class="student-prn">PRN: 1058 (2126UMEM1058)</p>
+              <p class="student-role">Extrusion Mechanics &amp; Motor Drive</p>
+              <p class="student-dept">FY B.Tech Mechanical Engineering</p>
+              <div class="team-photo-actions">
+                <input type="file" id="photo-input-member3" accept="image/*" class="visually-hidden">
+                <button type="button" class="btn-team-photo-upload" id="btn-upload-member3">📷 Upload Photo</button>
+                <button type="button" class="btn-team-photo-reset" id="btn-reset-member3" style="display: none;">Reset</button>
+              </div>
+            </div>
+
+            <!-- Member 4 -->
+            <div class="student-card">
+              <div class="student-photo-slot">
+                <img data-member-photo="member4" src="./assets/member4-BHb07DQp.jpg" alt="Prem Shantaram Gangurde" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%231b2330%22/><text x=%2250%22 y=%2258%22 font-size=%2230%22 font-weight=%22bold%22 text-anchor=%22middle%22 fill=%22%2338bdf8%22>PG</text></svg>'">
+              </div>
+              <h4>Prem Shantaram Gangurde</h4>
+              <p class="student-prn">PRN: 1014 (2126UMEM1014)</p>
+              <p class="student-role">Testing &amp; 3D Print Validation</p>
+              <p class="student-dept">FY B.Tech Mechanical Engineering</p>
+              <div class="team-photo-actions">
+                <input type="file" id="photo-input-member4" accept="image/*" class="visually-hidden">
+                <button type="button" class="btn-team-photo-upload" id="btn-upload-member4">📷 Upload Photo</button>
+                <button type="button" class="btn-team-photo-reset" id="btn-reset-member4" style="display: none;">Reset</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================== -->
+  <!-- FOOTER                                                                 -->
+  <!-- ====================================================================== -->
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <div class="footer-col">
+        <strong>PETGFilament</strong>
+        <p>Design and Development of 3D Printing Filament from PETG Bottles</p>
+        <p class="footer-meta">Makerspace · Group 10 · AY 2026-2027</p>
+      </div>
+      <div class="footer-col">
+        <strong>Institution</strong>
+        <p>Sanjivani University, Kopargaon</p>
+        <p>School of Engineering &amp; Technology</p>
+        <p>Department of Mechanical Engineering</p>
+      </div>
+      <div class="footer-col">
+        <strong>Mentorship</strong>
+        <p>Project Guide: Dr. Kiran Wakchaure Sir</p>
+        <p>Lead Student: Harshwardhan Shewale (PRN: 1016)</p>
+        <p class="footer-copy">© 2026 Sanjivani University Makerspace Project Team</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================================== -->
+  <!-- LIGHTBOX DIALOG                                                        -->
+  <!-- ====================================================================== -->
+  <dialog class="photo-dialog" id="photo-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-bar">
+      <span class="label-chip" id="dialog-kind">Photo</span>
+      <strong id="dialog-title">Engineering Sheet</strong>
+      <button type="button" class="dialog-btn" id="dialog-zoom">Zoom</button>
+      <button type="button" class="dialog-btn" id="dialog-close">Close ✕</button>
+    </div>
+    <div class="dialog-image-wrap" id="dialog-image-wrap">
+      <img id="dialog-image" src="" alt="">
+    </div>
+    <p class="dialog-caption" id="dialog-description"></p>
+  </dialog>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast" role="status" hidden></div>
+
+
+  <!-- Floating Section Navigator HUD -->
+  <aside class="section-nav-hud" id="section-nav-hud" aria-label="Section Quick Jump HUD">
+    <ul class="snh-track">
+      <li class="snh-item"><a href="#top" class="snh-link is-active" data-target="top" aria-label="Section 01 Overview"><span class="snh-dot"></span></a><span class="snh-tooltip">01 · Hero Overview</span></li>
+      <li class="snh-item"><a href="#problem" class="snh-link" data-target="problem" aria-label="Section 02 Problem Statement"><span class="snh-dot"></span></a><span class="snh-tooltip">02 · Problem Statement</span></li>
+      <li class="snh-item"><a href="#how" class="snh-link" data-target="how" aria-label="Section 03 Process Architecture"><span class="snh-dot"></span></a><span class="snh-tooltip">03 · Process Architecture</span></li>
+      <li class="snh-item"><a href="#journey" class="snh-link" data-target="journey" aria-label="Section 04 Development Journey"><span class="snh-dot"></span></a><span class="snh-tooltip">04 · Development Journey</span></li>
+      <li class="snh-item"><a href="#design" class="snh-link" data-target="design" aria-label="Section 05 SolidWorks CAD &amp; Dimensions"><span class="snh-dot"></span></a><span class="snh-tooltip">05 · CAD &amp; Dimensions</span></li>
+      <li class="snh-item"><a href="#explorer-section" class="snh-link" data-target="explorer-section" aria-label="Section 06 Interactive 3D Model"><span class="snh-dot"></span></a><span class="snh-tooltip">06 · 3D Model Explorer</span></li>
+      <li class="snh-item"><a href="#electronics" class="snh-link" data-target="electronics" aria-label="Section 07 Electronics &amp; Control"><span class="snh-dot"></span></a><span class="snh-tooltip">07 · Electronics &amp; Control</span></li>
+      <li class="snh-item"><a href="#testing" class="snh-link" data-target="testing" aria-label="Section 08 Testing &amp; Metrics"><span class="snh-dot"></span></a><span class="snh-tooltip">08 · Testing &amp; Metrics</span></li>
+      <li class="snh-item"><a href="#safety" class="snh-link" data-target="safety" aria-label="Section 09 Safety Protocols"><span class="snh-dot"></span></a><span class="snh-tooltip">09 · Safety Protocols</span></li>
+      <li class="snh-item"><a href="#gallery" class="snh-link" data-target="gallery" aria-label="Section 10 Project Gallery"><span class="snh-dot"></span></a><span class="snh-tooltip">10 · Project Gallery</span></li>
+      <li class="snh-item"><a href="#status" class="snh-link" data-target="status" aria-label="Section 11 Current Progress"><span class="snh-dot"></span></a><span class="snh-tooltip">11 · Current Progress</span></li>
+      <li class="snh-item"><a href="#references" class="snh-link" data-target="references" aria-label="Section 12 Team &amp; Guide"><span class="snh-dot"></span></a><span class="snh-tooltip">12 · Team &amp; Guide</span></li>
+    </ul>
+  </aside>
+
+</body>
+</html>
