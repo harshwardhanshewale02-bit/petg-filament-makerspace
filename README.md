@@ -1,10 +1,10 @@
 # 🌿 Design and Development of 3D Printing Filament from Recycled PETG Bottles
 
-[![Sanjivani University Makerspace](https://img.shields.io/badge/Sanjivani_University-Makerspace_AY_2026--2027-10b981?style=for-the-badge&logo=google-earth&logoColor=white)](https://sanjivani-makerspace-group10.surge.sh)
-[![Group 10](https://img.shields.io/badge/Team-Group_10-0284c7?style=for-the-badge)](https://sanjivani-makerspace-group10.surge.sh)
-[![Live Website](https://img.shields.io/badge/Live_Website-Visit_Project-10b981?style=for-the-badge&logo=vercel)](https://sanjivani-makerspace-group10.surge.sh)
-[![SolidWorks CAD](https://img.shields.io/badge/CAD-SolidWorks_2026-ef4444?style=for-the-badge&logo=dassaultsystemes)](https://sanjivani-makerspace-group10.surge.sh/#design)
-[![Three.js 3D Viewer](https://img.shields.io/badge/3D_Viewer-Three.js_WebGL-8b5cf6?style=for-the-badge&logo=three.js)](https://sanjivani-makerspace-group10.surge.sh/#explorer-section)
+[![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-Live_Website-2ea44f?style=for-the-badge&logo=github)](https://harshwardhanshewale02-bit.github.io/petg-filament-makerspace/)
+[![Sanjivani University Makerspace](https://img.shields.io/badge/Sanjivani_University-Makerspace_AY_2026--2027-10b981?style=for-the-badge&logo=google-earth&logoColor=white)](https://harshwardhanshewale02-bit.github.io/petg-filament-makerspace/)
+[![Group 10](https://img.shields.io/badge/Team-Group_10-0284c7?style=for-the-badge)](https://harshwardhanshewale02-bit.github.io/petg-filament-makerspace/)
+[![SolidWorks CAD](https://img.shields.io/badge/CAD-SolidWorks_2026-ef4444?style=for-the-badge&logo=dassaultsystemes)](https://harshwardhanshewale02-bit.github.io/petg-filament-makerspace/#design)
+[![Three.js 3D Viewer](https://img.shields.io/badge/3D_Viewer-Three.js_WebGL-8b5cf6?style=for-the-badge&logo=three.js)](https://harshwardhanshewale02-bit.github.io/petg-filament-makerspace/#explorer-section)
 
 > **Department of Mechanical Engineering · Sanjivani University, Kopargaon, Maharashtra, India**  
 > **Academic Year 2026–2027 · Makerspace Innovation Lab**  
@@ -15,7 +15,8 @@
 ## 🌐 Live Project Showcase Website
 Explore the full interactive project portal with 3D WebGL assembly, SolidWorks dimensional datum envelopes, real-time PID thermal simulator, and prototype gallery:
 
-- 🚀 **Primary Live Deployment:** [https://sanjivani-makerspace-group10.surge.sh](https://sanjivani-makerspace-group10.surge.sh)
+- 🚀 **Official GitHub Pages Website:** [https://harshwardhanshewale02-bit.github.io/petg-filament-makerspace/](https://harshwardhanshewale02-bit.github.io/petg-filament-makerspace/)
+- ⚡ **Global CDN Mirror:** [https://sanjivani-makerspace-group10.surge.sh](https://sanjivani-makerspace-group10.surge.sh)
 - 🔗 **Alternative Mirror:** [https://petg-filament-group10.surge.sh](https://petg-filament-group10.surge.sh)
 
 ---
