@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Avoid workflow OAuth scope issues
+.github/
+
