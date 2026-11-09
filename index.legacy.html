@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design & Development of 3D Printing Filament from PET Bottles | Makerspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(18, 24, 38, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent-green: #10b981;
+      --accent-cyan: #06b6d4;
+      --accent-blue: #3b82f6;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --glow: rgba(16, 185, 129, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(16, 185, 129, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 60%, rgba(6, 182, 212, 0.10) 0%, transparent 40%);
+      background-attachment: fixed;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header / Nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(9, 13, 22, 0.8);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #052e16;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-green);
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-green);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-green);
+      box-shadow: 0 0 10px var(--accent-green);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 90px 0 60px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      max-width: 950px;
+      margin-inline: auto;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 30%, var(--accent-green) 75%, var(--accent-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-lead {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      color: var(--text-muted);
+      max-width: 780px;
+      margin: 0 auto 36px;
+      font-weight: 400;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .btn {
+      padding: 13px 26px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-green), #059669);
+      color: #ffffff;
+      box-shadow: 0 4px 20px var(--glow);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(16, 185, 129, 0.35);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1px solid var(--card-border);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Stat Banner */
+    .stat-banner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(12px);
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 10px;
+    }
+
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent-green);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Section Styles */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+
+    /* Cards & Grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 30px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(16, 185, 129, 0.4);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(16, 185, 129, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-green);
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Workflow Pipeline */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      position: relative;
+    }
+
+    .timeline-step {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 24px 20px;
+      position: relative;
+    }
+
+    .step-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent-cyan);
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .timeline-step h4 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .timeline-step p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    /* Mentor Section */
+    .mentor-card {
+      background: linear-gradient(145deg, rgba(16, 185, 129, 0.08), rgba(6, 182, 212, 0.05));
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 20px;
+      padding: 36px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .mentor-avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent-green);
+      background-color: #1e293b;
+      flex-shrink: 0;
+      box-shadow: 0 0 25px var(--glow);
+    }
+
+    .mentor-details h3 {
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+    }
+
+    .mentor-title {
+      color: var(--accent-green);
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .mentor-quote {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-style: italic;
+    }
+
+    /* Team Grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .member-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .member-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(6, 182, 212, 0.4);
+    }
+
+    .member-photo-wrapper {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 16px;
+    }
+
+    .member-photo {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #1e293b;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .member-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .member-role {
+      font-size: 0.85rem;
+      color: var(--accent-cyan);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .member-id {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 14px;
+    }
+
+    .member-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .member-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s ease;
+    }
+
+    .member-links a:hover {
+      color: var(--text-main);
+    }
+
+    /* University Showcase */
+    .univ-banner {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .univ-media {
+      width: 100%;
+      height: 240px;
+      border-radius: 14px;
+      background: #1e293b;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .univ-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .univ-content h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+
+    .univ-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 16px;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .univ-meta strong {
+      color: var(--text-main);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      background: rgba(9, 13, 22, 0.95);
+    }
+
+    footer p {
+      margin-bottom: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 850px) {
+      .mentor-card {
+        flex-direction: column;
+        text-align: center;
+      }
+      .univ-banner {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav-container">
+      <div class="brand">
+        <div class="brand-icon">♻</div>
+        <span>PET2Filament</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#mentor">Mentor</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#university">University</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section (Starting Introduction) -->
+  <section class="hero">
+    <div class="container">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Makerspace Engineering Innovation
+      </div>
+
+      <h1>
+        Design &amp; Development of <br>
+        <span class="gradient-text">3D Printing Filament</span> <br>
+        from Recycled PET Bottles
+      </h1>
+
+      <p class="hero-lead">
+        Bridging circular economy and digital manufacturing. Transforming post-consumer plastic waste into high-precision, cost-effective 1.75mm FDM 3D printing filament.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#about" class="btn btn-primary">
+          <span>Explore Project Overview</span> →
+        </a>
+        <a href="#process" class="btn btn-secondary">
+          <span>View Methodology</span>
+        </a>
+      </div>
+
+      <!-- Quick Metrics Banner -->
+      <div class="stat-banner">
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Recycled PET</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">1.75 mm</div>
+          <div class="stat-label">Calibrated Diameter</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">~80%</div>
+          <div class="stat-label">Cost Reduction</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">±0.05 mm</div>
+          <div class="stat-label">Tolerance Target</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Executive Summary -->
+  <section id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>Executive Summary</h2>
+        <p>Turning an ecological challenge into sustainable additive manufacturing material.</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="feature-card">
+          <div class="card-icon">🌍</div>
+          <h3>The Environmental Crisis</h3>
+          <p>
+            Billions of single-use Polyethylene Terephthalate (PET) beverage bottles end up in landfills and oceans every year. Our project directly tackles this challenge by repurposing local plastic waste right in our makerspace.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="card-icon">⚙️</div>
+          <h3>The Engineering Solution</h3>
+          <p>
+            Using a precision thermal pultrusion and extrusion mechanism, continuous PET bottle ribbons are drawn through an actively heated brass nozzle, reforming flat plastic strips into continuous cylindrical 1.75mm filament.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="card-icon">💡</div>
+          <h3>Makerspace Philosophy</h3>
+          <p>
+            Built on low-cost, open-source principles. By empowering students, designers, and hobbyists to manufacture their own print filament on-demand, we make 3D printing both economical and zero-waste.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process / Methodology Timeline -->
+  <section id="process" style="background: rgba(18, 24, 38, 0.4);">
+    <div class="container">
+      <div class="section-title">
+        <h2>Development Pipeline</h2>
+        <p>From discarded beverage bottle to functional 3D printed prototype.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-step">
+          <span class="step-badge">STAGE 01</span>
+          <h4>Collection &amp; Prep</h4>
+          <p>Collection, thermal label detachment, cleaning, and uniform wall thickness inspection of transparent PET bottles.</p>
+        </div>
+
+        <div class="timeline-step">
+          <span class="step-badge">STAGE 02</span>
+          <h4>Precision Slitting</h4>
+          <p>Guided continuous ribbon cutter slicing the bottle body into a seamless, uniform ~9mm plastic strip with minimum burr.</p>
+        </div>
+
+        <div class="timeline-step">
+          <span class="step-badge">STAGE 03</span>
+          <h4>Thermal Pultrusion</h4>
+          <p>Pulling the strip through a PID-controlled heated block (200°C–230°C) with a tapered nozzle to reshape it into 1.75mm solid core.</p>
+        </div>
+
+        <div class="timeline-step">
+          <span class="step-badge">STAGE 04</span>
+          <h4>Calibrated Spooling</h4>
+          <p>Automated stepper-motor driven puller and spool winder ensuring uniform tension and dimensional tolerance checks.</p>
+        </div>
+
+        <div class="timeline-step">
+          <span class="step-badge">STAGE 05</span>
+          <h4>Test 3D Printing</h4>
+          <p>Validating layer adhesion, tensile strength, and printing temperature settings on open-source FDM 3D printers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Mentor / Guide -->
+  <section id="mentor">
+    <div class="container">
+      <div class="section-title">
+        <h2>Project Mentorship &amp; Guidance</h2>
+        <p>Steered with expertise in manufacturing, engineering design, and sustainable research.</p>
+      </div>
+
+      <div class="mentor-card">
+        <!-- Replace 'images/dr-kiran-wakchaure.jpg' with Professor's actual photo -->
+        <img 
+          src="images/dr-kiran-wakchaure.jpg" 
+          alt="Dr. Kiran Wakchaure Sir" 
+          class="mentor-avatar"
+          onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Dr+Kiran+Wakchaure&background=059669&color=fff&size=200';"
+        >
+        <div class="mentor-details">
+          <h3>Dr. Kiran Wakchaure Sir</h3>
+          <div class="mentor-title">Project Guide &amp; Faculty Mentor</div>
+          <p class="mentor-quote">
+            "Fostering sustainable innovation and hands-on maker culture by empowering young engineers to solve real-world ecological challenges through precision design and circular manufacturing."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Members (4 Members) -->
+  <section id="team" style="background: rgba(18, 24, 38, 0.4);">
+    <div class="container">
+      <div class="section-title">
+        <h2>The Engineering Team</h2>
+        <p>Four passionate makers collaborating on design, fabrication, electronics, and testing.</p>
+      </div>
+
+      <div class="team-grid">
+        <!-- Team Member 1 -->
+        <div class="member-card">
+          <div class="member-photo-wrapper">
+            <img 
+              src="images/member1.jpg" 
+              alt="Team Member 1" 
+              class="member-photo"
+              onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Member+1&background=10b981&color=fff&size=150';"
+            >
+          </div>
+          <h4 class="member-name">Team Member 1</h4>
+          <div class="member-role">Mechanical Design &amp; CAD</div>
+          <div class="member-id">PRN / Roll No: 0001</div>
+          <div class="member-links">
+            <a href="#" target="_blank">LinkedIn</a> •
+            <a href="#" target="_blank">GitHub</a>
+          </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="member-card">
+          <div class="member-photo-wrapper">
+            <img 
+              src="images/member2.jpg" 
+              alt="Team Member 2" 
+              class="member-photo"
+              onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Member+2&background=06b6d4&color=fff&size=150';"
+            >
+          </div>
+          <h4 class="member-name">Team Member 2</h4>
+          <div class="member-role">Electronics &amp; Temperature Control</div>
+          <div class="member-id">PRN / Roll No: 0002</div>
+          <div class="member-links">
+            <a href="#" target="_blank">LinkedIn</a> •
+            <a href="#" target="_blank">GitHub</a>
+          </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="member-card">
+          <div class="member-photo-wrapper">
+            <img 
+              src="images/member3.jpg" 
+              alt="Team Member 3" 
+              class="member-photo"
+              onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Member+3&background=3b82f6&color=fff&size=150';"
+            >
+          </div>
+          <h4 class="member-name">Team Member 3</h4>
+          <div class="member-role">Pultrusion Mechanism &amp; Extrusion</div>
+          <div class="member-id">PRN / Roll No: 0003</div>
+          <div class="member-links">
+            <a href="#" target="_blank">LinkedIn</a> •
+            <a href="#" target="_blank">GitHub</a>
+          </div>
+        </div>
+
+        <!-- Team Member 4 -->
+        <div class="member-card">
+          <div class="member-photo-wrapper">
+            <img 
+              src="images/member4.jpg" 
+              alt="Team Member 4" 
+              class="member-photo"
+              onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Member+4&background=8b5cf6&color=fff&size=150';"
+            >
+          </div>
+          <h4 class="member-name">Team Member 4</h4>
+          <div class="member-role">Testing, Characterization &amp; Docs</div>
+          <div class="member-id">PRN / Roll No: 0004</div>
+          <div class="member-links">
+            <a href="#" target="_blank">LinkedIn</a> •
+            <a href="#" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- University & Makerspace Showcase -->
+  <section id="university">
+    <div class="container">
+      <div class="section-title">
+        <h2>Institution &amp; Lab</h2>
+        <p>Developed with state-of-the-art facilities and open collaboration spaces.</p>
+      </div>
+
+      <div class="univ-banner">
+        <div class="univ-media">
+          <!-- Replace 'images/university-campus.jpg' with your university / lab photo -->
+          <img 
+            src="images/university-campus.jpg" 
+            alt="University Campus & Makerspace Lab" 
+            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=700&q=80';"
+          >
+        </div>
+        <div class="univ-content">
+          <div class="badge" style="margin-bottom: 12px;">Makerspace Lab</div>
+          <h3>University / College Name</h3>
+          <p style="color: var(--text-muted); margin-bottom: 16px;">
+            The Makerspace serves as an interdisciplinary creative incubator providing rapid prototyping tools, CNC machining, 3D printers, and electronics workstations for student-led technological breakthroughs.
+          </p>
+          <div class="univ-meta">
+            <div><strong>Department:</strong> Mechanical / Innovation &amp; Makerspace</div>
+            <div><strong>Faculty Guide:</strong> Dr. Kiran Wakchaure Sir</div>
+            <div><strong>Subject:</strong> Makerspace Laboratory Project</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p style="font-weight: 600; color: var(--text-main);">
+        Design &amp; Development of 3D Printing Filament from PET Bottles
+      </p>
+      <p>Makerspace Project • Guided by Dr. Kiran Wakchaure Sir</p>
+      <p style="font-size: 0.8rem; margin-top: 12px; color: #6b7280;">
+        Open-source documentation hosted via GitHub Pages.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
