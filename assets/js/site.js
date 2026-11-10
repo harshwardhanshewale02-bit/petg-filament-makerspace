@@ -776,7 +776,7 @@
         input: $('#photo-input-member2'),
         btnUpload: $('#btn-upload-member2'),
         btnReset: $('#btn-reset-member2'),
-        name: 'Shraddha Vijay Chavhanke (Chavan K)',
+        name: 'Shraddha Chavanke',
         defaultSrc: 'images/team/member2.jpg'
       },
       'member3': {
@@ -784,7 +784,7 @@
         input: $('#photo-input-member3'),
         btnUpload: $('#btn-upload-member3'),
         btnReset: $('#btn-reset-member3'),
-        name: 'Yugant Sunil Pawar',
+        name: 'Yugant Pawar',
         defaultSrc: 'images/team/member3.jpg'
       },
       'member4': {
@@ -792,7 +792,7 @@
         input: $('#photo-input-member4'),
         btnUpload: $('#btn-upload-member4'),
         btnReset: $('#btn-reset-member4'),
-        name: 'Prem Shantaram Gangurde',
+        name: 'Prem Gangurde',
         defaultSrc: 'images/team/member4.jpg'
       }
     };

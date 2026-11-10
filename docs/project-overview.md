@@ -20,10 +20,10 @@ This project investigates a compact, open-hardware pultrusion recycling system e
 - **Project Guide:** Dr. Kiran Wakchaure Sir
 
 ### Student Project Team:
-1. **Harshwardhan Shewale** (PRN: 1016 · 2126UMEM1016) — Lead Representative & Mechanical CAD Modeling
-2. **Shraddha Vijay Chavhanke (Chavan K)** (PRN: 1073 · 2126UMEM1073) — Thermal System & Heat Transfer Analysis
-3. **Yugant Sunil Pawar** (PRN: 1058 · 2126UMEM1058) — Extrusion Mechanics & Motor Drive System
-4. **Prem Shantaram Gangurde** (PRN: 1014 · 2126UMEM1014) — Testing, 3D Print Validation & Documentation
+1. **Harshwardhan Shewale** (PRN: 1016 · 2126UMEM1016) - AutoCAD Modeling
+2. **Shraddha Chavanke** (PRN: 1073 · 2126UMEF1073) - PPT Presentation
+3. **Yugant Pawar** (PRN: 1058 · 2126UMEM1058) - Testing & Hardware Work
+4. **Prem Gangurde** (PRN: 1014 · 2126UMEM1014) - Testing & Hardware Work
 
 ---
 
