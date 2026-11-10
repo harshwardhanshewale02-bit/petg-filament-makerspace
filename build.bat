@@ -6,7 +6,7 @@ echo  Building for PRODUCTION...
 echo ============================================
 echo.
 
-set "NODE=C:\Users\harsh\AppData\Local\OpenAI\Codex\runtimes\cua_node\1fb7137c46617d50\bin\node.exe"
+set "NODE=C:\Users\harsh\AppData\Local\AppLab\resources\node\node.exe"
 set "VITE=%~dp0node_modules\vite\bin\vite.js"
 set "PROJ=%~dp0"
 

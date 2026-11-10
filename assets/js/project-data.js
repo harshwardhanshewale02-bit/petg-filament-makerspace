@@ -33,34 +33,34 @@ window.PETFILAMENT_PROJECT = {
     {
       name: "Harshwardhan Shewale",
       prn: "PRN: 1016 (2126UMEM1016)",
-      role: "Lead Student & Mechanical CAD Modeling",
+      role: "AutoCAD Modeling",
       programme: "FY B.Tech Mechanical Engineering",
       institution: "Sanjivani University",
       photo: "images/team/member1.jpg",
       contribution: "SolidWorks assembly modeling, cutting fixture kinematics, frame alignment and structural fabrication."
     },
     {
-      name: "Shraddha Vijay Chavhanke (Chavan K)",
-      prn: "PRN: 1073 (2126UMEM1073)",
-      role: "Thermal System & Process Analysis",
+      name: "Shraddha Chavanke",
+      prn: "PRN: 1073 (2126UMEF1073)",
+      role: "PPT Presentation",
       programme: "FY B.Tech Mechanical Engineering",
       institution: "Sanjivani University",
       photo: "images/team/member2.jpg",
       contribution: "Heat transfer calculations, heating block sizing, thermocouple calibration and PID closed-loop tuning."
     },
     {
-      name: "Yugant Sunil Pawar",
+      name: "Yugant Pawar",
       prn: "PRN: 1058 (2126UMEM1058)",
-      role: "Extrusion Mechanics & Motor Drive System",
+      role: "Testing & Hardware Work",
       programme: "FY B.Tech Mechanical Engineering",
       institution: "Sanjivani University",
       photo: "images/team/member3.jpg",
       contribution: "Brass nozzle orifice profiling, stepper motor reduction gearing, puller roller grip testing and line tension."
     },
     {
-      name: "Prem Shantaram Gangurde",
+      name: "Prem Gangurde",
       prn: "PRN: 1014 (2126UMEM1014)",
-      role: "Testing, 3D Print Validation & Documentation",
+      role: "Testing & Hardware Work",
       programme: "FY B.Tech Mechanical Engineering",
       institution: "Sanjivani University",
       photo: "images/team/member4.jpg",

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ==============================================================================
  * CENTRALIZED PROJECT CONFIGURATION DATA
  * Project: Design and Development of 3D Printing Filament from PET Bottles
@@ -364,8 +364,8 @@ export const workDoneItems = [];
 export const teamMembers = [
   {
     id: "member-1",
-    name: "Harshwardhan Sanjay Shewale",
-    role: "Lead Student Representative & Mechanical CAD Modeling",
+    name: "Harshwardhan Shewale",
+    role: "AutoCAD Modeling",
     department: "Department of Mechanical Engineering",
     prn: "PRN: 2126UMEM1016",
     contribution:
@@ -376,10 +376,10 @@ export const teamMembers = [
   },
   {
     id: "member-2",
-    name: "Shraddha Vijay Chavhanke",
-    role: "Thermal System & Process Analysis",
+    name: "Shraddha Chavanke",
+    role: "PPT Presentation",
     department: "Department of Mechanical Engineering",
-    prn: "Student Member • Sanjivani University",
+    prn: "PRN: 2126UMEF1073",
     contribution:
       "Thermal mass balance calculations, heater block sizing, thermocouple feedback calibration, and PID controller tuning.",
     photo: "images/team/member2.jpg",
@@ -388,10 +388,10 @@ export const teamMembers = [
   },
   {
     id: "member-3",
-    name: "Yugant Sunil Pawar",
-    role: "Extrusion Mechanics & Motor Drive System",
+    name: "Yugant Pawar",
+    role: "Testing & Hardware Work",
     department: "Department of Mechanical Engineering",
-    prn: "Student Member • Sanjivani University",
+    prn: "PRN: 2126UMEM1058",
     contribution:
       "Nozzle orifice profiling, stepper motor reduction gearing, puller roller grip testing, and line tension calibration.",
     photo: "images/team/member3.jpg",
@@ -400,10 +400,10 @@ export const teamMembers = [
   },
   {
     id: "member-4",
-    name: "Prem Shantaram Gangurde",
-    role: "Testing, 3D Print Validation & Documentation",
+    name: "Prem Gangurde",
+    role: "Testing & Hardware Work",
     department: "Department of Mechanical Engineering",
-    prn: "Student Member • Sanjivani University",
+    prn: "PRN: 2126UMEM1014",
     contribution:
       "Diameter consistency checks, test specimen 3D printing on FDM printers, tensile evaluation, and report compilation.",
     photo: "images/team/member4.jpg",
