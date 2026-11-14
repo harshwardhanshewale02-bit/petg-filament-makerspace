@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Poster · Design & Development of 3D Printing Filament from PET Bottles · Group 10</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(18, 25, 38, 0.95);
+      --card-border: rgba(56, 189, 248, 0.2);
+      --primary: #38bdf8;
+      --primary-glow: rgba(56, 189, 248, 0.25);
+      --accent: #10b981;
+      --amber: #f59e0b;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --header-bg: #0a0f1d;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      line-height: 1.5;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 40%);
+    }
+
+    /* Print and Control Bar */
+    .top-actions {
+      max-width: 1600px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding: 12px 20px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+    }
+    .top-actions .info {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .top-actions .info strong {
+      color: var(--primary);
+    }
+    .btn-group {
+      display: flex;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #04101e;
+    }
+    .btn-primary:hover {
+      background: #7dd3fc;
+      box-shadow: 0 0 16px var(--primary-glow);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Poster Container (Ratio: 48" x 36" = 4:3) */
+    .poster-canvas {
+      max-width: 1600px;
+      width: 100%;
+      background: #0d1322;
+      border: 2px solid rgba(56, 189, 248, 0.3);
+      border-radius: 16px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(56, 189, 248, 0.15);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Poster Header */
+    .poster-header {
+      background: linear-gradient(135deg, #070b14 0%, #0f1c33 50%, #062b25 100%);
+      padding: 24px 32px 18px 32px;
+      border-bottom: 3px solid var(--primary);
+      position: relative;
+    }
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 18px;
+    }
+    .header-branding {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .uni-logo {
+      height: 72px;
+      width: auto;
+      background: #ffffff;
+      padding: 6px 12px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .uni-titles h3 {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+    .uni-titles p {
+      font-size: 13px;
+      color: #cbd5e1;
+      margin-top: 2px;
+    }
+    .group-badge {
+      background: linear-gradient(135deg, #064e3b 0%, #047857 100%);
+      border: 1px solid #10b981;
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-align: right;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+    }
+    .group-badge .g-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+    }
+    .group-badge .g-sub {
+      font-size: 12px;
+      color: #a7f3d0;
+    }
+
+    .project-banner {
+      margin-bottom: 20px;
+    }
+    .project-banner h1 {
+      font-size: 30px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.25;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      background: linear-gradient(to right, #ffffff, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .project-banner .subtitle {
+      font-size: 15px;
+      color: #cbd5e1;
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    /* Guide & Team Row */
+    .people-row {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 1fr 1fr 1fr;
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .person-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(30, 41, 59, 0.6);
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .person-card.guide-card {
+      border-color: rgba(56, 189, 248, 0.4);
+      background: rgba(14, 165, 233, 0.08);
+    }
+    .person-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary);
+      flex-shrink: 0;
+    }
+    .person-info {
+      overflow: hidden;
+    }
+    .person-role-tag {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .person-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .person-prn {
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #38bdf8;
+    }
+
+    /* Main Poster Body (4 Columns) */
+    .poster-body {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding: 24px;
+      background: #090e1a;
+      flex: 1;
+    }
+
+    .col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+    .card-head {
+      background: linear-gradient(90deg, #1e293b 0%, #0f172a 100%);
+      padding: 8px 14px;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-head .num-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      background: var(--primary);
+      color: #04101e;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .card-head h2 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .card-content {
+      padding: 14px;
+      font-size: 12.5px;
+      color: #cbd5e1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      line-height: 1.45;
+    }
+    .card-content strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .item-block {
+      border-left: 2px solid var(--primary);
+      padding-left: 8px;
+    }
+    .item-block.green {
+      border-left-color: var(--accent);
+    }
+    .item-block.amber {
+      border-left-color: var(--amber);
+    }
+    .item-block h4 {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 2px;
+    }
+    .item-block p {
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    /* Embedded Images in Cards */
+    .card-image-box {
+      width: 100%;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 6px;
+      background: #000000;
+    }
+    .card-image-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Data Table */
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+      margin-top: 4px;
+    }
+    .spec-table th, .spec-table td {
+      padding: 6px 8px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .spec-table th {
+      background: #0f172a;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 10.5px;
+      text-transform: uppercase;
+    }
+    .spec-table td.highlight {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* QR Code and Reference Block */
+    .qr-container {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .qr-img {
+      width: 80px;
+      height: 80px;
+      background: #ffffff;
+      padding: 4px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+    .qr-details h5 {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 2px;
+    }
+    .qr-details a {
+      color: #94a3b8;
+      font-size: 10.5px;
+      word-break: break-all;
+      text-decoration: none;
+    }
+    .qr-details a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+    .qr-details .note {
+      font-size: 9.5px;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    /* Print Setup for A1 / A0 flex print */
+    @media print {
+      body {
+        padding: 0;
+        background: #ffffff;
+        color: #000000;
+      }
+      .top-actions {
+        display: none !important;
+      }
+      .poster-canvas {
+        max-width: 100%;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+      }
+      @page {
+        size: A1 landscape;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Action Bar (Hidden on print) -->
+  <div class="top-actions">
+    <div class="info">
+      <strong>Makerspace Group 10 · Official Project Poster</strong> · Ready for A1/A0 flex printing & digital exhibition.
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save as PDF</button>
+      <a class="btn btn-secondary" href="../makerspace_group10_project_poster.pptx" download>📥 Download .PPTX Poster</a>
+      <a class="btn btn-secondary" href="index.html">🌐 Open Project Website</a>
+    </div>
+  </div>
+
+  <!-- Main Academic Poster Canvas -->
+  <div class="poster-canvas">
+
+    <!-- Poster Header Banner -->
+    <header class="poster-header">
+      <div class="header-top">
+        <div class="header-branding">
+          <img src="images/poster/university-logo.png" alt="Sanjivani University Logo" class="uni-logo">
+          <div class="uni-titles">
+            <h3>Sanjivani University, Kopargaon</h3>
+            <p>School of Engineering & Technology · Department of Mechanical Engineering · Makerspace Innovation Lab</p>
+          </div>
+        </div>
+        <div class="group-badge">
+          <div class="g-title">GROUP NO. 10</div>
+          <div class="g-sub">Academic Year 2026–2027</div>
+        </div>
+      </div>
+
+      <div class="project-banner">
+        <h1>Design and Development of 3D Printing Filament from PET Bottles</h1>
+        <div class="subtitle">An Open-Hardware Pultrusion Recycling System Converting Waste PETG/PET Plastic into 1.75 mm 3D Printing Filament</div>
+      </div>
+
+      <!-- Guide & Team Members Cards Row -->
+      <div class="people-row">
+        <!-- Guide -->
+        <div class="person-card guide-card">
+          <img src="images/poster/guide.jpg" alt="Dr. Kiran Wakchaure Sir" class="person-avatar">
+          <div class="person-info">
+            <div class="person-role-tag">Project Guide</div>
+            <div class="person-name">Dr. Kiran Wakchaure Sir</div>
+            <div class="person-prn">Dept. of Mechanical Engg</div>
+          </div>
+        </div>
+        <!-- Member 1: Harshwardhan Shewale -->
+        <div class="person-card">
+          <img src="images/poster/member1.jpg" alt="Harshwardhan Shewale" class="person-avatar">
+          <div class="person-info">
+            <div class="person-role-tag">Team Lead / CAD</div>
+            <div class="person-name">Harshwardhan Shewale</div>
+            <div class="person-prn">PRN: 2126UMEM1016</div>
+          </div>
+        </div>
+        <!-- Member 2: Shraddha Chavanke -->
+        <div class="person-card">
+          <img src="images/poster/member2.jpg" alt="Shraddha Chavanke" class="person-avatar">
+          <div class="person-info">
+            <div class="person-role-tag">Documentation & PPT</div>
+            <div class="person-name">Shraddha Chavanke</div>
+            <div class="person-prn">PRN: 2126UMEF1073</div>
+          </div>
+        </div>
+        <!-- Member 3: Yugant Pawar -->
+        <div class="person-card">
+          <img src="images/poster/member3.jpg" alt="Yugant Pawar" class="person-avatar">
+          <div class="person-info">
+            <div class="person-role-tag">Assembly & Testing</div>
+            <div class="person-name">Yugant Pawar</div>
+            <div class="person-prn">PRN: 2126UMEM1058</div>
+          </div>
+        </div>
+        <!-- Member 4: Prem Gangurde -->
+        <div class="person-card">
+          <img src="images/poster/member4.jpg" alt="Prem Gangurde" class="person-avatar">
+          <div class="person-info">
+            <div class="person-role-tag">Fabrication & Hardware</div>
+            <div class="person-name">Prem Gangurde</div>
+            <div class="person-prn">PRN: 2126UMEM1014</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Poster Multi-Column Body -->
+    <main class="poster-body">
+
+      <!-- COLUMN 1: Problem, Objectives & Material Science -->
+      <div class="col">
+        <!-- 1. Problem Statement -->
+        <section class="section-card">
+          <div class="card-head">
+            <span class="num-badge">01</span>
+            <h2>Problem Statement & Motivation</h2>
+          </div>
+          <div class="card-content">
+            <div class="item-block">
+              <h4>Global Plastic Pollution Crisis</h4>
+              <p>Over 380 million tonnes of single-use plastics are produced annually. Discarded PET drink bottles choke municipal dumps and waterways worldwide.</p>
+            </div>
+            <div class="item-block">
+              <h4>High Cost of 3D Printing Filament</h4>
+              <p>Commercial virgin PLA and PETG filament cost ₹1,400 to ₹2,500/kg, creating an unsustainable recurring cost for student innovators and academic makerspaces.</p>
+            </div>
+            <div class="item-block green">
+              <h4>Decentralized Upcycling Solution</h4>
+              <p>Our benchtop pultrusion machine transforms waste bottles directly into high-tensile 1.75 mm filament at <strong>₹0.00/kg raw material cost</strong> without industrial pelletization.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. Project Objectives -->
+        <section class="section-card">
+          <div class="card-head">
+            <span class="num-badge">02</span>
+            <h2>Project Objectives</h2>
+          </div>
+          <div class="card-content">
+            <div class="item-block">
+              <h4>1. Precision Ribbon Slitter</h4>
+              <p>Engineered a bearing-guided utility blade fixture to slice bottle sidewalls into uniform 9.0 mm ribbons.</p>
+            </div>
+            <div class="item-block">
+              <h4>2. Thermal Pultrusion Die</h4>
+              <p>Fabricated an aluminum heater block with conical 1.75 mm nozzle operating at 245°C–260°C.</p>
+            </div>
+            <div class="item-block green">
+              <h4>3. Closed-Loop PID Temperature Control</h4>
+              <p>Implemented thermistor feedback maintaining ±1.5°C thermal stability under air quenching.</p>
+            </div>
+            <div class="item-block">
+              <h4>4. Geared Stepper Traction Puller</h4>
+              <p>High-torque NEMA17 puller drawing filament at continuous 300–450 mm/min without necking.</p>
+            </div>
+            <div class="item-block amber">
+              <h4>5. Print Validation</h4>
+              <p>Verified standard 1.75 ± 0.05 mm diameter tolerance for seamless feeding on open-source FDM 3D printers.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. Material Science -->
+        <section class="section-card">
+          <div class="card-head">
+            <span class="num-badge">03</span>
+            <h2>Material Science: PET vs. PETG</h2>
+          </div>
+          <div class="card-content">
+            <div class="item-block">
+              <h4>Molecular Chain Orientation</h4>
+              <p>Blow-molded beverage bottles feature biaxially oriented molecular chains granting superior tensile strength (55–65 MPa). Pultrusion preserves molecular alignment.</p>
+            </div>
+            <div class="item-block">
+              <h4>PET vs. PETG Glycol Modification</h4>
+              <p>PETG incorporates CHDM glycol to inhibit crystallization. Pure bottle PET is semi-crystalline; it forms at 250°C and requires pre-drying (<0.02% moisture) to prevent hydrolytic degradation.</p>
+            </div>
+            <div class="item-block green">
+              <h4>Thermal Resistance ($T_g$)</h4>
+              <p>Bottle PET has a glass transition temperature of <strong>78°C–82°C</strong> (higher than PLA at 55°C–60°C), resulting in parts with superior outdoor and thermal durability.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- COLUMN 2: Process, Methodology & CAD -->
+      <div class="col">
+        <!-- 4. Working Principle & Pipeline -->
+        <section class="section-card">
+          <div class="card-head">
+            <span class="num-badge">04</span>
+            <h2>Working Principle & Process Flow</h2>
+          </div>
+          <div class="card-content">
+            <div class="item-block">
+              <h4>Stage 01 · Collection & Preparation</h4>
+              <p>Clean 1.0L–2.0L beverage bottles washed with surfactant. Labels removed and base cut cleanly.</p>
+            </div>
+            <div class="item-block">
+              <h4>Stage 02 · Continuous Ribbon Slitting</h4>
+              <p>Bottle mounted on arbor; bearing blade strips continuous 9.0 mm ribbon yielding ~20m per 2L bottle.</p>
+            </div>
+            <div class="item-block green">
+              <h4>Stage 03 · Thermal Pultrusion</h4>
+              <p>Lead-in ribbon drawn through 250°C conical brass nozzle; flat ribbon progressively curls into 1.75 mm solid rod.</p>
+            </div>
+            <div class="item-block">
+              <h4>Stage 04 · Rapid Air Quenching</h4>
+              <p>Focused 40mm fan drops polymer below $T_g$ immediately upon exit, locking circular tolerance.</p>
+            </div>
+            <div class="item-block amber">
+              <h4>Stage 05 · Stepper Puller & Spooling</h4>
+              <p>Planetary geared stepper draws filament with steady traction onto a master 3D-printed spool.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. SolidWorks 3D Digital Twin -->
+        <section class="section-card">
+          <div class="card-head">
+            <span class="num-badge">05</span>
+            <h2>SolidWorks 3D Digital Twin</h2>
+          </div>
+          <div class="card-content">
+            <div class="card-image-box">
+              <img src="images/poster/cad-cropped.png" alt="SolidWorks 3D CAD Assembly Digital Twin">
+            </div>
+            <div class="item-block">
+              <h4>Assembly Digital Twin (<code>makerspace_A.SLDASM</code>)</h4>
+              <p>Complete assembly modeled in SolidWorks with 8 modular subsystems comprising 47,944 facets across a 486 × 177 × 418 mm frame.</p>
+            </div>
+            <div class="item-block green">
+              <h4>Key Mechanical Features</h4>
+              <p>• Dual-bearing slitter with micro-height adjuster.<br>
+              • Phenolic thermal isolation barrier decoupling 260°C hotend from wooden base.<br>
+              • Geared NEMA17 puller with knurled dual-drive gears.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- COLUMN 3: Hardware Implementation & Electronics -->
+      <div class="col">
+        <!-- 6. Physical Prototype -->
+        <section class="section-card">
+          <div class="card-head">
+            <span class="num-badge">06</span>
+            <h2>Hardware Prototype Assembly</h2>
+          </div>
+          <div class="card-content">
+            <div class="card-image-box">
+              <img src="images/poster/hardware-sideview.jpg" alt="Physical Hardware Prototype Setup">
+            </div>
+            <div class="item-block">
+              <h4>Integrated Benchtop Workstation</h4>
+              <p>CNC-machined rigid wood baseboard integrates power distribution, control motherboard, LCD panel, and extrusion stage into dedicated, safe zones.</p>
+            </div>
+            <div class="item-block green">
+              <h4>Real-Time Telemetry Interface</h4>
+              <p>Front panel houses 12864 Graphical LCD display with rotary encoder showing live hotend temperature, setpoint, traction RPM, and runtime.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. Electrical Circuits & Control -->
+        <section class="section-card">
+          <div class="card-head">
+            <span class="num-badge">07</span>
+            <h2>Circuits & PID Thermal Control</h2>
+          </div>
+          <div class="card-content">
+            <div class="item-block">
+              <h4>Power Architecture (24V 10A M-STAR SMPS)</h4>
+              <p>Industrial 240W switch-mode power supply enables rapid preheating (<3 mins to 250°C). AC input secured with fused IEC socket and illuminated safety switch.</p>
+            </div>
+            <div class="item-block green">
+              <h4>Microcontroller & Drivers</h4>
+              <p>Arduino/RAMPS 1.4 executing Marlin-derived firmware with low-$R_{ds(on)}$ MOSFET for heater and A4988 microstepping driver with active cooling.</p>
+            </div>
+            <div class="item-block amber">
+              <h4>Closed-Loop PID Regulation</h4>
+              <p>Tuned PID algorithm sampled via NTC 100K 3950 thermistor maintains die temperature within <strong>±1.5°C</strong> of 250°C under cooling airflow.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- COLUMN 4: Specifications, Sustainability, Results & QR Code -->
+      <div class="col">
+        <!-- 8. Specifications & Benchmarks -->
+        <section class="section-card">
+          <div class="card-head">
+            <span class="num-badge">08</span>
+            <h2>Specifications & Benchmarks</h2>
+          </div>
+          <div class="card-content">
+            <table class="spec-table">
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>PLA</th>
+                  <th>PETG</th>
+                  <th>Recycled PET</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Raw Cost</strong></td>
+                  <td>₹1,500/kg</td>
+                  <td>₹1,800/kg</td>
+                  <td class="highlight">₹0.00 / kg</td>
+                </tr>
+                <tr>
+                  <td><strong>Diameter</strong></td>
+                  <td>1.75±0.03</td>
+                  <td>1.75±0.03</td>
+                  <td class="highlight">1.75±0.05</td>
+                </tr>
+                <tr>
+                  <td><strong>Extrusion</strong></td>
+                  <td>200°C</td>
+                  <td>240°C</td>
+                  <td class="highlight">250°C</td>
+                </tr>
+                <tr>
+                  <td><strong>Glass Temp</strong></td>
+                  <td>55°C–60°C</td>
+                  <td>75°C–80°C</td>
+                  <td class="highlight">78°C–82°C</td>
+                </tr>
+                <tr>
+                  <td><strong>Tensile</strong></td>
+                  <td>45–55 MPa</td>
+                  <td>50–60 MPa</td>
+                  <td class="highlight">55–65 MPa</td>
+                </tr>
+                <tr>
+                  <td><strong>Power</strong></td>
+                  <td>Factory</td>
+                  <td>Factory</td>
+                  <td class="highlight">65 W Avg</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="item-block green">
+              <h4>Tolerance Analysis</h4>
+              <p>15-meter extrusion sampling yielded mean diameter 1.748 mm with $\sigma = 0.038\text{ mm}$ and circularity error <3.5%, meeting FDM tolerances.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 9. Sustainability -->
+        <section class="section-card">
+          <div class="card-head">
+            <span class="num-badge">09</span>
+            <h2>Sustainability & SDGs</h2>
+          </div>
+          <div class="card-content">
+            <div class="item-block">
+              <h4>UN SDG 12 · Responsible Consumption</h4>
+              <p>Decentralized circular polymer recycling eliminating petroleum refining and shipping footprints.</p>
+            </div>
+            <div class="item-block green">
+              <h4>UN SDG 13 · Climate Action</h4>
+              <p>Recycling 1 kg of waste PET prevents ~2.3 kg of CO2 equivalent emissions vs virgin polymer production.</p>
+            </div>
+            <div class="item-block amber">
+              <h4>Practical Material Yield</h4>
+              <p>1 standard 2.0L bottle yields <strong>~18 to 22 meters</strong> of 1.75 mm filament (~40g), enough for 2 structural brackets.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 10. Conclusions -->
+        <section class="section-card">
+          <div class="card-head">
+            <span class="num-badge">10</span>
+            <h2>Conclusions & Future Work</h2>
+          </div>
+          <div class="card-content">
+            <p><strong>Outcome:</strong> Validated an affordable, open-hardware recycling pultruder delivering continuous, printer-ready 1.75 mm filament from discarded beverage bottles.</p>
+            <p><strong>Future Work:</strong> Integrate active laser micrometer closed-loop speed regulation and automated heated spool winding.</p>
+          </div>
+        </section>
+
+        <!-- 11. References & Live QR Code -->
+        <section class="section-card">
+          <div class="card-head">
+            <span class="num-badge">11</span>
+            <h2>References & Live Portal</h2>
+          </div>
+          <div class="card-content">
+            <div class="qr-container">
+              <img src="images/poster/website-qr.png" alt="Scan QR Code for Live Website" class="qr-img">
+              <div class="qr-details">
+                <h5>Scan for Live 3D Web Portal</h5>
+                <a href="https://harshwardhanshewale02-bit.github.io/petg-filament-makerspace/" target="_blank">harshwardhanshewale02-bit.github.io/petg-filament-makerspace</a>
+                <div class="note">Interactive SolidWorks 3D viewer, telemetry lab, and gallery.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </main>
+  </div>
+
+</body>
+</html>
