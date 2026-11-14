@@ -21,6 +21,23 @@ Explore the full interactive project portal with 3D WebGL assembly, SolidWorks d
 
 ---
 
+## 📄 Official Academic Project Poster
+
+The official Makerspace Group 10 academic project poster is available in multiple interactive and high-resolution print formats:
+
+- 🌐 **Interactive Web Poster:** [View Poster Online](https://harshwardhanshewale02-bit.github.io/petg-filament-makerspace/poster.html) (features 1-click A1/A0 flex print & vector PDF export)
+- 📥 **Print-Ready Vector PDF (A1 / A0):** [Download PDF](https://github.com/harshwardhanshewale02-bit/petg-filament-makerspace/raw/main/makerspace_group10_project_poster.pdf)
+- 📊 **PowerPoint Presentation Poster (.pptx):** [Download PPTX](https://github.com/harshwardhanshewale02-bit/petg-filament-makerspace/raw/main/makerspace_group10_project_poster.pptx) (Standard 48" × 36" academic poster slide, fully editable in Microsoft PowerPoint)
+- 🖼️ **4K High-Resolution Preview Image:** [View Poster PNG](https://raw.githubusercontent.com/harshwardhanshewale02-bit/petg-filament-makerspace/main/makerspace_group10_project_poster.png)
+
+<p align="center">
+  <a href="https://harshwardhanshewale02-bit.github.io/petg-filament-makerspace/poster.html">
+    <img src="makerspace_group10_project_poster.png" alt="Makerspace Group 10 Academic Project Poster" width="95%">
+  </a>
+</p>
+
+---
+
 ## ðŸ‘¥ Project Team (Group 10)
 
 | Student Name | PRN Number | University Roll / PRN | Role & Responsibilities |
